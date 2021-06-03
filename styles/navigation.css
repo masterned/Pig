@@ -1,0 +1,27 @@
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0.3rem;
+    width: max-content;
+}
+
+nav ul li a {
+    padding: 0.5rem 1rem;
+    background-color: firebrick;
+    background-image: url("https://i.pinimg.com/originals/7a/40/fe/7a40fe5b352b0bd3ff459a47384ee764.jpg");
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+    text-shadow: black 1px 1px;
+    border: solid black 1px;
+    width: max-content;
+}
+
+nav ul li a:hover {
+    color: rgb(253, 215, 228);
+}
