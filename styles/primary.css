@@ -12,7 +12,7 @@ main {
 
 footer {
     background-color: rgb(253, 215, 228, 0.9);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     text-align: center;
