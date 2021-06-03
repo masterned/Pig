@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../styles/primary.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+
+    <title>Pig :: Strategies</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./rules_and_variations.html">Rules &amp; Variations</a></li>
+            <li><a href="./strategies.html">Strategies</a></li>
+            <li><a href="./background.html">Background</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Strategies</h1>
+
+        <h2>Notes which apply to all strategies in all versions</h2>
+        <ul>
+            <li>Due to the game relying upon randomness, playing an optimum strategy does not guarantee a win.</li>
+            <li>Due to how probabilities work, rolling more dice increases the chances of losing one's turn.</li>
+            <li>It is possible (not probable) to reach the goal score without ever taking a hold action.</li>
+            <li>It is also possible to roll all 1s, and never score any points in a game.</li>
+        </ul>
+
+        <h2>Hold at `n`</h2>
+        <h3>Instructions</h3>
+        <ol>
+            <li>Pick a number between 2 and 100 (optimally around 20).</li>
+            <li>On your turn, roll until you have increased your total score by that amount, you roll a 1, or you
+                surpass 100 points.</li>
+        </ol>
+        <h3>Rational</h3>
+        <p>Due to the number of sides on the dice (6), selecting 20 as the target, keeps the odds of reward versus risk
+            in the favor of the player. Going for more, the player risks losing more points than they can win back
+            within their odds. Going for fewer points, the player does not fully take advantage of their chances.</p>
+
+        <h2>`t` Scoring Turns</h2>
+        <h3>Instructions</h3>
+        <ol>
+            <li>Select a number of scoring turns.</li>
+            <li>Break the 100 points up evenly over those turns.</li>
+            <li>Use the goals as `n` in the "Hold at `n`" strategy</li>
+            <li>If you roll excess, adjust next goal accordingly</li>
+        </ol>
+        <h3>Rational</h3>
+        <p>By taking your current score into account, each kept score group is better correlated with the player's
+            current need.</p>
+
+        <h2>Optimized `t` Scoring Turns</h2>
+        <h3>Instructions</h3>
+        <p>Perform "`t` Scoring Turns" strategy, including a buffer of a few points around the next goal. Increasing or
+            decreasing the next goal according to buffer size and distance to the goal.</p>
+        <h3>Rational</h3>
+        <p>By allowing the goals to decrease or increase, each goal more dynamically fits to the player's current
+            scoring state.</p>
+
+        <h2>Score Base `b`, Keep Pace `p`, End Race `e`</h2>
+        <h3>Instructions</h3>
+        <p>Keep track of the other players score, increasing your goal whenever they pass you, decreasing your goal
+            whenever you pass them. Goals must be at least the selected score base (19 should be pretty good). Keep
+            rolling if either player is within a certain distance from the end (31 suggested).</p>
+        <h3>Rational</h3>
+        <p>Keeping track of the other player's score allows you to adapt to the situation. If the other player is
+            roughly one turn away from winning, you have nothing to lose from continuous rolling.</p>
+
+        <h2>Keep Pace `(c, d)` and End Race `e`</h2>
+        <h3>Instructions</h3>
+        <ul>
+            <li>If the either player is close to the goal, keep rolling.</li>
+            <li>Otherwise, stay within a certain boundary of the other player.</li>
+        </ul>
+        <p>The optimal roll strategy for this tactic is if either player's score >= 71, keep rolling. Otherwise, use the
+            result of dividing the difference of your score from theirs by 8 rounded plus 21 as your round goal.</p>
+        <h3>Rational</h3>
+        <p>The only thing you really need to worry about is the other player. In most versions, the game only ends if
+            someone reaches 100 points. Stick with them, stay ahead of them, and/or pass them at the end.</p>
+
+        <p><strong>Disclaimer: I did not come up with these numbers myself. Much smarter individuals from the University
+                of Gettysburg came up with these numbers.</strong> Here is a link to their academic paper I pulled all
+            of this information from: <a href="http://cs.gettysburg.edu/~tneller/papers/umap10.pdf">Practical Play of
+                the Dice Game Pig</a>.</p>
+    </main>
+
+    <footer>&copy;Copyright 2021 Spencer Dent</footer>
+</body>
+
+</html>
