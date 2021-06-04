@@ -25,11 +25,17 @@ If anything pops-up, I'll add them here. Hopefully, you'll take a look at this d
 
 ## Notes to myself
 
-### Website Pages (minimum)
+### TODO
+* if long page `back to top` button
+* simplify strategies page
+* separate rules from variations
+* simplify variation explanation
+
+### Website Pages
+* Rules & Objective
+* Other Variations
+* Strategies
 * Background
-* Objective
-* Rules
-* Strategies of various versions
 
 ### Variations
 
