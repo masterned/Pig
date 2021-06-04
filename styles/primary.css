@@ -1,6 +1,5 @@
 html {
-    background-color: #634928;
-    background: url("https://i2ctech.com/wp-content/uploads/2020/06/Red-Barn.jpg") no-repeat center center fixed;
+    background: #634928 url("https://i2ctech.com/wp-content/uploads/2020/06/Red-Barn.jpg") no-repeat center center fixed;
     background-size: cover;
     font-size: larger;
 }
