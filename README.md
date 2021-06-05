@@ -19,17 +19,13 @@ If anything pops-up, I'll add them here. Hopefully, you'll take a look at this d
 > I plan on uploading this repo to github for safe-keeping, and github has a built-in markdown interpreter on all of its project pages. Markdown is also much easier to read.
 
 #### Why did you rewrite the same navigation code for each page rather than using a template engine?
-
 > I could not guarantee you have the template engine I select, and creating a build script is beyond the current scope of this class.
 > The upload limit may also prohibit build scripts.
 
-## Notes to myself
+#### I see commits from another account "masterned," and a pull request.
+> That would be my personal account. I needed to work on the project while I was out of town, and I didn't have access to my school computer.
 
-### TODO
-* if long page `back to top` button
-* simplify strategies page
-* separate rules from variations
-* simplify variation explanation
+## Notes to myself
 
 ### Website Pages
 * Rules & Objective
