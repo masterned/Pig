@@ -27,64 +27,61 @@
         <h1>Strategies</h1>
 
         <ul>
-            <li>Due to the game relying upon randomness, playing an optimum strategy does not guarantee a win.</li>
+            <li>Due to the game relying upon randomness, playing an "optimum" strategy does not guarantee a win.</li>
             <li>Due to how probabilities work, rolling more dice increases the chances of losing one's turn.</li>
             <li>It is possible (not probable) to reach the goal score without ever taking a hold action.</li>
             <li>It is also possible to roll all 1s, and never score any points in a game.</li>
+            <li>The strategies outlined here are optimized for the original game. Additional rules may make them less
+                efficient.</li>
+            <li>The game has a slight bias towards the first player to roll.</li>
         </ul>
 
-        <table>
-            <thead>
-                <th></th>
-                <th>Instructions</th>
-                <th>Rationale</th>
-            </thead>
-            <tbody>
-                <tr id="score-goals">
-                    <th>Score Goals</th>
-                    <td>Pick a score goal for each round. If you make your goal stop.</td>
-                    <td>Using a 6-sided die, 20 seems to work best. Picking a goal that balances the risk against the
-                        reward is the key to this strategy.</td>
-                </tr>
-                <tr id="scoring-turns">
-                    <th>Scoring Turns</th>
-                    <td>Choose a number of scoring turns to have, and make the needed number of points to reach 100 your
-                        goal for each round.</td>
-                    <td>Due to the randomness of the die, over-scoring your goal is quite common. Being able to adjust
-                        your goal per round allows the player to stop earlier, reducing the risk.</td>
-                </tr>
-                <tr id="turn-buffer">
-                    <th>Turn Buffer</th>
-                    <td>Select a number of turns and a number to serve as a buffer. Follow the "Scoring Turns" strategy,
-                        but allow a range around each goal the size you selected. If you take a score within the leeway
-                        below the buffer, increase the next goal. If you take points greater than the goal, decrease the
-                        next goal, staying within the buffer.</td>
-                    <td>Allowing the goal to be flexible, adapting to the scores you have already gained, allows you to
-                        further reduce the risks.</td>
-                </tr>
-                <tr id="competitive-goals">
-                    <th>Competitive Goals</th>
-                    <td>Keep track of the other players score, increasing your goal whenever they pass you, decreasing
-                        your goal whenever you pass them. Goals must be at least the selected score base (19 should be
-                        pretty good). Keep rolling if either player is within a certain distance from the end (31
-                        suggested).
-                    </td>
-                    <td>
-                        Keeping track of the other player's score allows you to adapt to the situation. If the other
-                        player is roughly one turn away from winning, you have nothing to lose from continuous rolling.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <section id="score-goals">
+            <h2>Score Goals</h2>
+            <p>
+                Pick a score goal for each round. If you make your goal stop. Around 20 seems to work best. Picking a
+                goal that balances the risk against the reward is the key to this strategy.
+            </p>
+        </section>
 
-        <p>
+        <section id="scoring-turns">
+            <h2>Scoring Turns</h2>
+            <p>
+                Choose a number of scoring turns to have, and divide 100 by that number to get your goal for each round.
+                No matter the goal, it is more common to bust on a round or overshoot it than land on it exactly. Adjust
+                the goal by dividing the number of points left by the number of round remaining. This strategy allows
+                the player to reduce their risk each turn by leveraging the score they have already accumulated.
+            </p>
+        </section>
+
+        <section id="turn-buffer">
+            <h2>Turn Buffer</h2>
+            <p>
+                Use the "Scoring Turns" strategy but factor in a score buffer. Give yourself a specific amount of leeway
+                round the goal, and adjust accordingly. <em>You will need to account for the buffer when calculating
+                    your next goal.</em> This allows the goals more flexibility, reducing the player's risk further.
+            </p>
+        </section>
+
+        <section id="competitive-goals">
+            <h2>Competitive Goals</h2>
+            <p>
+                Keep track of the other players score, increasing your goal whenever they pass you, decreasing your goal
+                whenever you pass them. Goals must be at least the selected score base (19 should be pretty good). Keep
+                rolling if either player is within a certain distance from the end (31 suggested). Keeping track of the
+                other player's score allows you to adapt to the situation. If the other player is roughly one turn away
+                from winning, you have nothing to lose from continuous rolling.
+            </p>
+        </section>
+
+        <aside>
             <strong>Disclaimer:</strong>
             <em>
                 I did not come up with these numbers myself. Much smarter individuals from Gettysburg College completed
                 the necessary tests. Here is a link to their academic paper I used as a source for my information:
                 <a href="http://cs.gettysburg.edu/~tneller/papers/umap10.pdf">Practical Play of the Dice Game Pig</a>.
             </em>
-        </p>
+        </aside>
     </main>
 
     <footer>&copy;Copyright 2021 Spencer Dent</footer>
