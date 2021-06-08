@@ -1,14 +1,8 @@
 # Pig
 
-## Stages
-
-### Stage 1
-> In this stage of the project, I will be creating a website for the dice game __Pig__.
-> The site will explain the rules, variations, and history of the game, provide play strategies and statistics, and explain how __Pig__ has been used in education.
-
 ## Notes to Dr Orsega
 
-If anything pops-up, I'll add them here. Hopefully, you'll take a look at this document.
+If anything pops-up, I'll add them here.
 
 ### My Rationale
 
@@ -24,27 +18,3 @@ If anything pops-up, I'll add them here. Hopefully, you'll take a look at this d
 
 #### I see commits from another account "masterned," and a pull request.
 > That would be my personal account. I needed to work on the project while I was out of town, and I didn't have access to my school computer.
-
-## Notes to myself
-
-### Website Pages
-* Rules & Objective
-* Other Variations
-* Strategies
-* Background
-
-### Variations
-
-* Pig (classic) &ndash; roll or hold: 1s bust, loop until hold or bust, take turns, first to 100
-* Two-dice Pig &ndash; classic plus: double 1s remove all player's points
-* Big Pig &ndash; classic except: roll 2 at time, doubles double, double 1s end but add 25
-* Hog &ndash; classic except: number of dice chosen at beginning of each turn
-* Skunk (aka Think) &ndash; classic except: everyone rolls at the same time, only 5 rounds, highest score wins
-* Pass the Pigs &ndash; similar dice game with novelty, pig-shaped dice with optional bonus rules. uses orientation of pigs to decide scores
-
-### Strategies
-* Hold at `n`
-* Simple `t` scoring turns
-* Optimized `t` scoring turns, minimal turns
-* Score base `b`, Keep pace `p`, End race `e`
-* Keep pace `(c,d)` and End race `e`
