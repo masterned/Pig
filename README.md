@@ -48,12 +48,3 @@ If anything pops-up, I'll add them here. Hopefully, you'll take a look at this d
 * Optimized `t` scoring turns, minimal turns
 * Score base `b`, Keep pace `p`, End race `e`
 * Keep pace `(c,d)` and End race `e`
-
-### Useful Links
-* [Wikipedia Pig](https://en.wikipedia.org/wiki/Pig_(dice_game))
-* [Dice Game Depot](https://www.dicegamedepot.com/dice-n-games-blog/pig-dice-game-rules/)
-* [Complete Rules](https://www.thesprucecrafts.com/pig-dice-game-complete-rules-of-pig-411405)
-* [6 Different Ways to Play](https://www.whatdowedoallday.com/pig-dice-game/)
-* [Game of Pig Website](http://cs.gettysburg.edu/projects/pig/)
-* [Math of Strategies](http://cs.gettysburg.edu/~tneller/papers/umap10.pdf)
-* [Pass the Pigs](https://www.fgbradleys.com/rules//Pass%20The%20Pigs.pdf)
