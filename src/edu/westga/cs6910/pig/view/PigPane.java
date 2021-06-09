@@ -44,6 +44,8 @@ public class PigPane extends BorderPane {
 		this.addHumanPlayerPane(theGame);
 		
 		this.addStatusPane(theGame);
+		
+		this.addComputerPlayerPane(theGame);
 
 		// TODO: 1. Using the 'first player chooser pane' as a guide
 		// Create an HBox with the appropriate style, then make a human
@@ -78,6 +80,14 @@ public class PigPane extends BorderPane {
 		this.pnGameInfo = new StatusPane(theGame);
 		centerBox.getChildren().add(this.pnGameInfo);
 		this.pnContent.setCenter(centerBox);
+	}
+	
+	private void addComputerPlayerPane(Game theGame) {
+		HBox rightBox = new HBox();
+		rightBox.getStyleClass().add("pane-border");
+		this.pnComputerPlayer = new ComputerPane(theGame);
+		rightBox.getChildren().add(this.pnComputerPlayer);
+		this.pnContent.setRight(rightBox);
 	}
 
 	/**
