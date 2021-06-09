@@ -171,11 +171,15 @@ public class Game implements Observable {
 	 * Swaps the players so that the other player becomes the current player.
 	 */
 	private void swapWhoseTurn() {
-		// TODO: Swap the players so that the other player becomes
+		// FIXME: Swap the players so that the other player becomes
 		// the current player. Note that in order to access the
 		// object inside of the ObjectProperty, you'll need to use
 		// getValue() and setValue()
-
+		if (this.currentPlayerObject.getValue().equals(this.theHuman)) {
+			this.currentPlayerObject.setValue(this.theComputer);
+		} else {
+			this.currentPlayerObject.setValue(this.theHuman);
+		}
 	}
 
 	@Override
