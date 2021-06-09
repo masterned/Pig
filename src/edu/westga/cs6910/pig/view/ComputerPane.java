@@ -114,7 +114,10 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 			// TODO: if the game isn't finished: 
 			//		 - Set the maximum number of rolls
 			//		 - Tell theGame to play a move.
-
+			if (!ComputerPane.this.theGame.isGameOver()) {
+				ComputerPane.this.theComputer.setMaximumRolls();
+				ComputerPane.this.theGame.play();
+			}
 		}
 	}
 }
