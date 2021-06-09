@@ -12,8 +12,10 @@ package edu.westga.cs6910.pig.model;
  * ComputerPlayer represents a very simple automated player in the game Pig.
  * It rolls exactly 1 time and then holds.
  * 
- * @author CS6910
- * @version Summer 2021
+ * This class was started by CS6910
+ * 
+ * @author Spencer Dent
+ * @version 2021-06-09
  */
 public class ComputerPlayer implements Player {
 	private static final String NAME = "Simple computer";

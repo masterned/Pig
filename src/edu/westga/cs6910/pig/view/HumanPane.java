@@ -15,8 +15,10 @@ import javafx.scene.layout.HBox;
  * Defines the panel that lets the user indicate whether they want to 
  * 	roll or hold on their turn
  * 
- * @author CS6910
- * @version Summer 2021
+ * This class was started by CS6910
+ * 
+ * @author Spencer Dent
+ * @version 2021-06-09
  */
 public class HumanPane extends GridPane implements InvalidationListener {
 	private Label lblDiceValues;
