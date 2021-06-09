@@ -1,6 +1,6 @@
 package edu.westga.cs6910.pig.model;
 
-// TODO: Classes ComputerPlayer and HumanPlayer share most of their code.
+// FIXME: Classes ComputerPlayer and HumanPlayer share most of their code.
 //		 Refactor their code:
 // 		 1. Create abstract base class AbstractPlayer to implement the
 //			shared code and define abstract methods for methods without
