@@ -5,6 +5,7 @@ import edu.westga.cs6910.pig.model.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -118,7 +119,9 @@ public class PigPane extends BorderPane {
 			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
 			this.radComputerPlayer.setOnAction(new ComputerFirstListener());
 
-			// TODO: Create a ToggleGroup and add the 2 radio buttons to it.
+			// FIXME: Create a ToggleGroup and add the 2 radio buttons to it.
+			ToggleGroup firstPlayerRadioButtonToggleGroup = new ToggleGroup();
+			firstPlayerRadioButtonToggleGroup.getToggles().addAll(this.radHumanPlayer, this.radComputerPlayer);
 			
 			// TODO: Add the 2 radio buttons to this pane.
 
