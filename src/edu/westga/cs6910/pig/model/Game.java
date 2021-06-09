@@ -88,7 +88,6 @@ public class Game implements Observable {
 	 * @ensures !whoseTurn().equals(whoseTurn()@prev)
 	 */
 	public void hold() {
-		// FIXME: Swap whose turn it is.
 		this.swapWhoseTurn();
 
 		this.isGameOver();
@@ -171,10 +170,6 @@ public class Game implements Observable {
 	 * Swaps the players so that the other player becomes the current player.
 	 */
 	private void swapWhoseTurn() {
-		// FIXME: Swap the players so that the other player becomes
-		// the current player. Note that in order to access the
-		// object inside of the ObjectProperty, you'll need to use
-		// getValue() and setValue()
 		if (this.currentPlayerObject.getValue().equals(this.theHuman)) {
 			this.currentPlayerObject.setValue(this.theComputer);
 		} else {

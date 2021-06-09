@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 
 /**
  * Defines a GUI for the Pig game.
+ * 
  * This class was started by CS6910
  * 
  * @author Spencer Dent
@@ -42,15 +43,10 @@ public class PigPane extends BorderPane {
 
 		this.addFirstPlayerChooserPane(theGame);
 
-		// FIXME: 1. Using the 'first player chooser pane' as a guide
-		// Create an HBox with the appropriate style, then make a human
-		// player pane and add it to the HBox. Finally add the HBox to the content pane
 		this.addHumanPlayerPane(theGame);
 
-		// FIXME: 2. Using the other panes as a guide, create and add a status pane
 		this.addStatusPane(theGame);
 
-		// FIXME: 3. Using the other panes as a guide, create and add a computer pane
 		this.addComputerPlayerPane(theGame);
 
 		this.setCenter(this.pnContent);
@@ -71,7 +67,7 @@ public class PigPane extends BorderPane {
 		leftBox.getChildren().add(this.pnHumanPlayer);
 		this.pnContent.setLeft(leftBox);
 	}
-	
+
 	private void addStatusPane(Game theGame) {
 		HBox centerBox = new HBox();
 		centerBox.getStyleClass().add("pane-border");
@@ -79,7 +75,7 @@ public class PigPane extends BorderPane {
 		centerBox.getChildren().add(this.pnGameInfo);
 		this.pnContent.setCenter(centerBox);
 	}
-	
+
 	private void addComputerPlayerPane(Game theGame) {
 		HBox rightBox = new HBox();
 		rightBox.getStyleClass().add("pane-border");
@@ -114,16 +110,12 @@ public class PigPane extends BorderPane {
 			this.radHumanPlayer = new RadioButton(this.theHuman.getName() + " first");
 			this.radHumanPlayer.setOnAction(new HumanFirstListener());
 
-			// FIXME: Instantiate the computer player button and add
-			// ComputerFirstListener as its action listener.
 			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
 			this.radComputerPlayer.setOnAction(new ComputerFirstListener());
 
-			// FIXME: Create a ToggleGroup and add the 2 radio buttons to it.
 			ToggleGroup firstPlayerRadioButtonToggleGroup = new ToggleGroup();
 			firstPlayerRadioButtonToggleGroup.getToggles().addAll(this.radHumanPlayer, this.radComputerPlayer);
-			
-			// FIXME: Add the 2 radio buttons to this pane.
+
 			this.add(this.radHumanPlayer, 0, 0);
 			this.add(this.radComputerPlayer, 1, 0);
 		}
@@ -155,8 +147,7 @@ public class PigPane extends BorderPane {
 			@Override
 			public void handle(ActionEvent event) {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-				// FIXME: Enable the human player pane and start a game
-				// with the human playing first.
+
 				PigPane.this.pnHumanPlayer.setDisable(false);
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theHuman);
 			}
