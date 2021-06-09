@@ -123,8 +123,9 @@ public class PigPane extends BorderPane {
 			ToggleGroup firstPlayerRadioButtonToggleGroup = new ToggleGroup();
 			firstPlayerRadioButtonToggleGroup.getToggles().addAll(this.radHumanPlayer, this.radComputerPlayer);
 			
-			// TODO: Add the 2 radio buttons to this pane.
-
+			// FIXME: Add the 2 radio buttons to this pane.
+			this.add(this.radHumanPlayer, 0, 0);
+			this.add(this.radComputerPlayer, 1, 0);
 		}
 
 		/**
