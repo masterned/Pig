@@ -113,11 +113,13 @@ public class PigPane extends BorderPane {
 			this.radHumanPlayer = new RadioButton(this.theHuman.getName() + " first");
 			this.radHumanPlayer.setOnAction(new HumanFirstListener());
 
-			// TODO: Instantiate the computer player button and add
+			// FIXME: Instantiate the computer player button and add
 			// ComputerFirstListener as its action listener.
+			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
+			this.radComputerPlayer.setOnAction(new ComputerFirstListener());
 
 			// TODO: Create a ToggleGroup and add the 2 radio buttons to it.
-
+			
 			// TODO: Add the 2 radio buttons to this pane.
 
 		}
