@@ -42,12 +42,30 @@ public abstract class AbstractPlayer implements Player {
 		this.turnTotal = 0;
 	}
 
+	/**
+	 * Sets the turnTotal to the given value.
+	 * 
+	 * @param newTurnTotal the new total for the turn
+	 */
+	public void setTurnTotal(int newTurnTotal) {
+		this.turnTotal = newTurnTotal;
+	}
+
 	@Override
 	/**
 	 * @see Player#getIsMyTurn()
 	 */
 	public boolean getIsMyTurn() {
 		return this.isMyTurn;
+	}
+
+	/**
+	 * Sets the turn indicator flag to the given boolean.
+	 * 
+	 * @param isTurn whether or not it's the Player's turn
+	 */
+	public void setIsMyTurn(boolean isTurn) {
+		this.isMyTurn = isTurn;
 	}
 
 	@Override
@@ -72,6 +90,24 @@ public abstract class AbstractPlayer implements Player {
 	 */
 	public int getTotal() {
 		return this.total;
+	}
+
+	/**
+	 * Sets the total to a new integer
+	 * 
+	 * @param newTotal the new integer to use
+	 */
+	public void setTotal(int newTotal) {
+		this.total = newTotal;
+	}
+
+	/**
+	 * Returns the pair of dice the Player is using to roll
+	 * 
+	 * @return the DicePair
+	 */
+	public DicePair getThePair() {
+		return this.thePair;
 	}
 
 	@Override
