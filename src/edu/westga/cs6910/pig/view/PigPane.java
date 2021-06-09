@@ -41,15 +41,15 @@ public class PigPane extends BorderPane {
 
 		this.addFirstPlayerChooserPane(theGame);
 
-		// TODO: 1. Using the 'first player chooser pane' as a guide
+		// FIXME: 1. Using the 'first player chooser pane' as a guide
 		// Create an HBox with the appropriate style, then make a human
 		// player pane and add it to the HBox. Finally add the HBox to the content pane
 		this.addHumanPlayerPane(theGame);
 
-		// TODO: 2. Using the other panes as a guide, create and add a status pane
+		// FIXME: 2. Using the other panes as a guide, create and add a status pane
 		this.addStatusPane(theGame);
 
-		// TODO: 3. Using the other panes as a guide, create and add a computer pane
+		// FIXME: 3. Using the other panes as a guide, create and add a computer pane
 		this.addComputerPlayerPane(theGame);
 
 		this.setCenter(this.pnContent);

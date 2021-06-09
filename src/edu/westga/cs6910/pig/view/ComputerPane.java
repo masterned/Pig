@@ -37,7 +37,7 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 	public ComputerPane(Game theGame) {
 		this.theGame = theGame;
 		
-		// TODO: Add this object as an listener of the Game.
+		// FIXME: Add this object as an listener of the Game.
 		this.theGame.addListener(this);
 		
 		this.theComputer = this.theGame.getComputerPlayer();
@@ -46,7 +46,7 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 	}
 	
 	private void buildPane() {
-		// TODO: Using the other pane classes as a model, build this pane.
+		// FIXME: Using the other pane classes as a model, build this pane.
 		HBox topBox = new HBox();
 		topBox.getStyleClass().add("box-center");
 		topBox.getStyleClass().add("box-padding");
@@ -80,7 +80,7 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 		boolean myTurn = this.theGame.getCurrentPlayer() == this.theComputer;
 
 		if (!myTurn) {
-			// TODO: Set the user interface to show the results
+			// FIXME: Set the user interface to show the results
 			// of the computer rolling the dice
 			int turnTotal = this.theComputer.getTotal();
 			String result = this.theComputer.getDiceValues();
@@ -88,7 +88,7 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 			this.lblTurnTotal.setText("" + turnTotal);
 		}
 
-		// TODO: Disable this Pane if it is no longer the computer's turn, enable it if
+		// FIXME: Disable this Pane if it is no longer the computer's turn, enable it if
 		// it is the computer's turn
 		this.setDisable(!myTurn);
 
@@ -111,7 +111,7 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 		 */
 		@Override
 		public void handle(ActionEvent arg0) {
-			// TODO: if the game isn't finished: 
+			// FIXME: if the game isn't finished: 
 			//		 - Set the maximum number of rolls
 			//		 - Tell theGame to play a move.
 			if (!ComputerPane.this.theGame.isGameOver()) {
