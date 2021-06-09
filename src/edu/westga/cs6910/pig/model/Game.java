@@ -89,7 +89,8 @@ public class Game implements Observable {
 	 * @ensures		!whoseTurn().equals(whoseTurn()@prev)
 	 */
 	public void hold() {
-		// TODO: Swap whose turn it is.
+		// FIXME: Swap whose turn it is.
+		this.swapWhoseTurn();
 		
 		this.isGameOver();
 	}
