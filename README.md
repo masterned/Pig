@@ -18,3 +18,6 @@ If anything pops-up, I'll add them here.
 
 #### I see commits from another account "masterned," and a pull request.
 > That would be my personal account. I needed to work on the project while I was out of town, and I didn't have access to my school computer.
+
+#### Adding more methods to some of the models
+> In order to properly test the models, I needed to add a few accessors to view the inner state of the objects. This was also necessary in order to implement the abstract method in the AbstractPlayer class without the use of protected instance variables.
