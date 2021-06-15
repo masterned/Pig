@@ -117,5 +117,12 @@ public abstract class AbstractPlayer implements Player {
 	public String getDiceValues() {
 		return this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value();
 	}
-
+	
+	@Override
+	/**
+	 * @see Player#toString()
+	 */
+	public String toString() {
+		return this.name + ": total: " + this.total + ", dice pair: " + this.thePair.toString();
+	}
 }
