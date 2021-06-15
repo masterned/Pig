@@ -1,8 +1,8 @@
 package edu.westga.cs6910.pig.model;
 
 /**
- * ComputerPlayer represents a very simple automated player in the game Pig.
- * It rolls exactly 1 time and then holds.
+ * ComputerPlayer represents a very simple automated player in the game Pig. It
+ * rolls exactly 1 time and then holds.
  * 
  * This class was started by CS6910
  * 
@@ -12,54 +12,53 @@ package edu.westga.cs6910.pig.model;
 public class ComputerPlayer extends AbstractPlayer {
 	private static final String NAME = "Simple computer";
 	private int maximumRolls;
-	
+
 	/**
 	 * Creates a new ComputerPlayer with the specified name.
-	 * 
 	 */
 	public ComputerPlayer() {
 		super(NAME);
 	}
-	
+
 	/**
-	 * Implements Player's setMaximumRolls, but is not normally
-	 * called by client objects.  Instead, clients usually
-	 * call the 0-parameter version
+	 * Sets the computer player's maximumRolls to the given value.
 	 * 
-	 * @param	maximumRolls	The maximum number of times the computer
-	 * 							will roll before holding
+	 * @param maximumRolls The maximum number of times the computer will roll before
+	 *                     holding
 	 */
 	public void setMaximumRolls(int maximumRolls) {
 		this.maximumRolls = maximumRolls;
 	}
 
 	/**
-	 * Implements Player's setMaximumRolls() to set the 
-	 * maximum number of rolls to 1
+	 * Implements Player's setMaximumRolls() to set the maximum number of rolls to 1
 	 * 
 	 */
 	public void setMaximumRolls() {
-		this.maximumRolls = 1;
+		this.setMaximumRolls(1);
 	}
 
 	@Override
 	/**
+	 * FIXME: When computer player rolls a 1, its overall total is set to 0.
+	 * 
 	 * @see Player#takeTurn()
-	 */	
-	public void takeTurn() {				
+	 */
+	public void takeTurn() {
 		for (int count = 0; count < this.maximumRolls; count++) {
 			this.getThePair().rollDice();
-			
+
 			int die1Value = this.getThePair().getDie1Value();
 			int die2Value = this.getThePair().getDie2Value();
+
 			if (die1Value == 1 || die2Value == 1) {
 				this.setTotal(this.getTotal() - this.getTurnTotal());
 				this.setIsMyTurn(false);
 				return;
-			} else {		
+			} else {
 				this.setTurnTotal(this.getTurnTotal() + die1Value + die2Value);
-				this.setTotal(this.getTotal() + die1Value + die2Value);		
-			}		
+				this.setTotal(this.getTotal() + die1Value + die2Value);
+			}
 		}
 		this.setIsMyTurn(false);
 	}
