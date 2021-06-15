@@ -18,6 +18,7 @@ public class ComputerPlayer extends AbstractPlayer {
 	 */
 	public ComputerPlayer() {
 		super(NAME);
+		this.maximumRolls = 0;
 	}
 
 	/**
