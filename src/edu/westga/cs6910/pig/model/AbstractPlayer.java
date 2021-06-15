@@ -12,9 +12,11 @@ public abstract class AbstractPlayer implements Player {
 
 	private String name;
 	private DicePair thePair;
+
 	private boolean isMyTurn;
-	private int total;
+
 	private int turnTotal;
+	private int total;
 
 	/**
 	 * Serves as a template constructor to reduce repetition in Player class
@@ -24,31 +26,42 @@ public abstract class AbstractPlayer implements Player {
 	 */
 	public AbstractPlayer(String name) {
 		this.name = name;
-		this.total = 0;
 		this.thePair = new DicePair();
-	}
-
-	@Override
-	/**
-	 * @see Player#takeTurn()
-	 */
-	public abstract void takeTurn();
-
-	@Override
-	/**
-	 * @see Player#resetTurnTotal()
-	 */
-	public void resetTurnTotal() {
 		this.turnTotal = 0;
+		this.total = 0;
+	}
+
+	@Override
+	/**
+	 * @see Player#toString()
+	 */
+	public String toString() {
+		return this.name + ": total: " + this.total + ", dice pair: " + this.thePair.toString();
+	}
+
+	@Override
+	/**
+	 * @see Player#getName()
+	 */
+	public String getName() {
+		return this.name;
 	}
 
 	/**
-	 * Sets the turnTotal to the given value.
+	 * Returns the pair of dice the Player is using to roll
 	 * 
-	 * @param newTurnTotal the new total for the turn
+	 * @return the DicePair
 	 */
-	public void setTurnTotal(int newTurnTotal) {
-		this.turnTotal = newTurnTotal;
+	public DicePair getThePair() {
+		return this.thePair;
+	}
+
+	@Override
+	/**
+	 * @see Player#getDiceValues()
+	 */
+	public String getDiceValues() {
+		return this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value();
 	}
 
 	@Override
@@ -70,18 +83,27 @@ public abstract class AbstractPlayer implements Player {
 
 	@Override
 	/**
-	 * @see Player#getName()
-	 */
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	/**
 	 * @see Player#getTurnTotal()
 	 */
 	public int getTurnTotal() {
 		return this.turnTotal;
+	}
+
+	/**
+	 * Sets the turnTotal to the given value.
+	 * 
+	 * @param newTurnTotal the new total for the turn
+	 */
+	public void setTurnTotal(int newTurnTotal) {
+		this.turnTotal = newTurnTotal;
+	}
+
+	@Override
+	/**
+	 * @see Player#resetTurnTotal()
+	 */
+	public void resetTurnTotal() {
+		this.setTurnTotal(0);
 	}
 
 	@Override
@@ -101,28 +123,9 @@ public abstract class AbstractPlayer implements Player {
 		this.total = newTotal;
 	}
 
-	/**
-	 * Returns the pair of dice the Player is using to roll
-	 * 
-	 * @return the DicePair
-	 */
-	public DicePair getThePair() {
-		return this.thePair;
-	}
-
 	@Override
 	/**
-	 * @see Player#getDiceValues()
+	 * @see Player#takeTurn()
 	 */
-	public String getDiceValues() {
-		return this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value();
-	}
-	
-	@Override
-	/**
-	 * @see Player#toString()
-	 */
-	public String toString() {
-		return this.name + ": total: " + this.total + ", dice pair: " + this.thePair.toString();
-	}
+	public abstract void takeTurn();
 }
