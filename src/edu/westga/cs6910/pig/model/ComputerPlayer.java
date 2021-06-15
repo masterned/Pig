@@ -50,8 +50,6 @@ public class ComputerPlayer extends AbstractPlayer {
 
 	@Override
 	/**
-	 * FIXME: When computer player rolls a 1, its overall total is set to 0.
-	 * 
 	 * @see Player#takeTurn()
 	 */
 	public void takeTurn() {
