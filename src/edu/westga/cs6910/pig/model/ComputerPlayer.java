@@ -21,6 +21,15 @@ public class ComputerPlayer extends AbstractPlayer {
 	}
 
 	/**
+	 * Retrieves the computer player's maximumRolls.
+	 * 
+	 * @return The maximum number of times the computer will roll before holding
+	 */
+	public int getMaximumRolls() {
+		return this.maximumRolls;
+	}
+
+	/**
 	 * Sets the computer player's maximumRolls to the given value.
 	 * 
 	 * @param maximumRolls The maximum number of times the computer will roll before
