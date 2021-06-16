@@ -27,3 +27,6 @@ If anything pops-up, I'll add them here.
 
 ### The listener methods in the Game class are not tested
 > There does not seem to be an accessor method for the listeners attached to the currentPlayer object. Without an accessor, I wouldn't be able to test the two methods.
+
+### Game's `play` & Player's `takeTurn` methods are not tested
+> Game's `play` relies on Player's `takeTurn`, and Player's `takeTurn` relies on `rollDice`. `rollDice` outputs a random number (not allowing a clean way of testing it). `rollDice`'s boundaries have already been tested. For the remaining portion of the two methods, I extracted the other chucks of logic and tested them individually. I am unsure of the best way to test the integration of all of the parts without use of inversion of control or mocking (techniques we have not gone over yet).
