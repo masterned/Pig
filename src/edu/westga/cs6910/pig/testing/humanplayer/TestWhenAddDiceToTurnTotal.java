@@ -19,7 +19,7 @@ public class TestWhenAddDiceToTurnTotal {
 	 * When called on a new HumanPlayer, turnTotal should be set to 2 (0 + 1 + 1).
 	 */
 	@Test
-	void testWithNewHumanPlayerShouldSetTurnTotalTo2() {
+	public void testWithNewHumanPlayerShouldSetTurnTotalTo2() {
 		HumanPlayer testHumanPlayer = new HumanPlayer("David Lightman");
 		testHumanPlayer.addDiceToTurnTotal();
 		assertEquals(2, testHumanPlayer.getTurnTotal());

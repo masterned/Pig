@@ -20,7 +20,7 @@ public class TestWhenAddDiceToTurnTotal {
 	 * 1).
 	 */
 	@Test
-	void testWithNewComputerPlayerShouldSetTurnTotalTo2() {
+	public void testWithNewComputerPlayerShouldSetTurnTotalTo2() {
 		ComputerPlayer testComputerPlayer = new ComputerPlayer();
 		testComputerPlayer.addDiceToTurnTotal();
 		assertEquals(2, testComputerPlayer.getTurnTotal());
