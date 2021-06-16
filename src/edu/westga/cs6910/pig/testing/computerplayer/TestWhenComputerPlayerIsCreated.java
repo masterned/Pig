@@ -20,7 +20,7 @@ public class TestWhenComputerPlayerIsCreated {
 	 * computer" with a total of 0 and a newly generated DicePair.
 	 */
 	@Test
-	void testShouldProduceComputerPlayerWithNameSimpleComputerAndTotal0() {
+	public void testShouldProduceComputerPlayerWithNameSimpleComputerAndTotal0() {
 		ComputerPlayer testComputerPlayer = new ComputerPlayer();
 		assertEquals("Simple computer: total: 0, dice pair: die 1: pips: 1, die 2: pips: 1",
 				testComputerPlayer.toString());
