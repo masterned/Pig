@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import edu.westga.cs6910.pig.model.ComputerPlayer;
 
 /**
- * Provides testing to verify the expected behavior of ComputerPlayer's
- * constructor.
+ * Provides unit testing to verify the expected behavior of ComputerPlayer's
+ * constructor and toString method.
  * 
  * @author Spencer Dent
  * @version 2021-06-14
