@@ -54,20 +54,17 @@ public class ComputerPlayer extends AbstractPlayer {
 	 */
 	public void takeTurn() {
 		for (int count = 0; count < this.maximumRolls; count++) {
-			this.getThePair().rollDice();
+			this.rollDice();
 
-			int die1Value = this.getThePair().getDie1Value();
-			int die2Value = this.getThePair().getDie2Value();
-
-			if (die1Value == 1 || die2Value == 1) {
+			if (this.hasRolledAOne()) {
 				this.resetTurnTotal();
 				this.setIsMyTurn(false);
 				return;
 			} else {
-				this.setTurnTotal(this.getTurnTotal() + die1Value + die2Value);
+				this.addDiceToTurnTotal();
 			}
 		}
-		this.setTotal(this.getTotal() + this.getTurnTotal());
+		this.addTurnTotalToTotal();
 		this.setIsMyTurn(false);
 	}
 }

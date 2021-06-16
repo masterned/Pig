@@ -57,12 +57,28 @@ public abstract class AbstractPlayer implements Player {
 		return this.thePair;
 	}
 
+	/**
+	 * Rolls the dice.
+	 */
+	public void rollDice() {
+		this.thePair.rollDice();
+	}
+
 	@Override
 	/**
 	 * @see Player#getDiceValues()
 	 */
 	public String getDiceValues() {
 		return this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value();
+	}
+
+	/**
+	 * Returns whether one or both of the dice have one pip showing
+	 * 
+	 * @return whether one or both of the dice have one pip showing
+	 */
+	public boolean hasRolledAOne() {
+		return this.thePair.getDie1Value() == 1 || this.thePair.getDie2Value() == 1;
 	}
 
 	@Override
@@ -107,6 +123,13 @@ public abstract class AbstractPlayer implements Player {
 		this.setTurnTotal(0);
 	}
 
+	/**
+	 * Adds the value of the two dice to the turnTotal.
+	 */
+	public void addDiceToTurnTotal() {
+		this.turnTotal += this.thePair.getDie1Value() + this.thePair.getDie2Value();
+	}
+
 	@Override
 	/**
 	 * @see Player#getTotal()
@@ -122,6 +145,13 @@ public abstract class AbstractPlayer implements Player {
 	 */
 	public void setTotal(int newTotal) {
 		this.total = newTotal;
+	}
+
+	/**
+	 * Adds the turnTotal to the total.
+	 */
+	public void addTurnTotalToTotal() {
+		this.total += this.turnTotal;
 	}
 
 	@Override
