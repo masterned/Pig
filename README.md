@@ -26,4 +26,4 @@ If anything pops-up, I'll add them here.
 > I'm assuming I was supposed to check to make sure the game hasn't ended when the player tries to hold. Without doing so didn't cause the program to crash, but it messes up the tests.
 
 ### The listener methods in the Game class are not tested
-> There does not seem to be a accessor method for the listeners attached to the currentPlayer object. Without an accessor, I wouldn't be able to test the two methods.
+> There does not seem to be an accessor method for the listeners attached to the currentPlayer object. Without an accessor, I wouldn't be able to test the two methods.
