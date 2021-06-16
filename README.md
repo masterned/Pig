@@ -21,3 +21,6 @@ If anything pops-up, I'll add them here.
 
 ### Adding more methods to some of the models
 > In order to properly test the models, I needed to add a few accessors to view the inner state of the objects. This was also necessary in order to implement the abstract method in the AbstractPlayer class without the use of protected instance variables.
+
+### Changing the `hold` method in the Game class
+> I'm assuming I was supposed to check to make sure the game hasn't ended when the player tries to hold. Without doing so didn't cause the program to crash, but it messes up the tests.
