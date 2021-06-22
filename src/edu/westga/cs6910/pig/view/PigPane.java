@@ -99,20 +99,32 @@ public class PigPane extends BorderPane {
 		
 		Menu gameMenu = new Menu("_Game");
 		gameMenu.setMnemonicParsing(true);
+		
 		MenuItem exitMenuItem = new MenuItem("E_xit");
 		exitMenuItem.setMnemonicParsing(true);
-		exitMenuItem.setOnAction(actionEvent -> System.exit(0));
 		exitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
+		exitMenuItem.setOnAction(actionEvent -> System.exit(0));
+		
 		gameMenu.getItems().add(exitMenuItem);
 		
 		Menu strategyMenu = new Menu("_Strategy");
 		strategyMenu.setMnemonicParsing(true);
+		
 		MenuItem cautiousMenuItem = new MenuItem("_Cautious");
 		cautiousMenuItem.setMnemonicParsing(true);
+		cautiousMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN));
+		cautiousMenuItem.setOnAction(actionEvent -> System.out.println("Cautious Strategy Activated"));
+		
 		MenuItem greedyMenuItem = new MenuItem("_Greedy");
 		greedyMenuItem.setMnemonicParsing(true);
+		greedyMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN));
+		greedyMenuItem.setOnAction(actionEvent -> System.out.println("Greedy Strategy Activated"));
+		
 		MenuItem randomMenuItem = new MenuItem("_Random");
 		randomMenuItem.setMnemonicParsing(true);
+		randomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
+		randomMenuItem.setOnAction(actionEvent -> System.out.println("Random Strategy Activated"));
+		
 		strategyMenu.getItems().addAll(cautiousMenuItem, greedyMenuItem, randomMenuItem);
 		
 		menuBar.getMenus().addAll(gameMenu, strategyMenu);
