@@ -9,6 +9,9 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -94,9 +97,12 @@ public class PigPane extends BorderPane {
 		menuBar.prefWidthProperty().bind(this.widthProperty());
 		this.setTop(menuBar);
 		
-		Menu gameMenu = new Menu("Game");
-		MenuItem exitMenuItem = new MenuItem("Exit");
+		Menu gameMenu = new Menu("_Game");
+		gameMenu.setMnemonicParsing(true);
+		MenuItem exitMenuItem = new MenuItem("E_xit");
+		exitMenuItem.setMnemonicParsing(true);
 		exitMenuItem.setOnAction(actionEvent -> System.exit(0));
+		exitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
 		gameMenu.getItems().add(exitMenuItem);
 		
 		Menu strategyMenu = new Menu("Strategy");
