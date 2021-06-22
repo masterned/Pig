@@ -97,10 +97,15 @@ public class PigPane extends BorderPane {
 		Menu gameMenu = new Menu("Game");
 		MenuItem exitMenuItem = new MenuItem("Exit");
 		exitMenuItem.setOnAction(actionEvent -> System.exit(0));
-		
 		gameMenu.getItems().add(exitMenuItem);
 		
-		menuBar.getMenus().addAll(gameMenu);
+		Menu strategyMenu = new Menu("Strategy");
+		MenuItem cautiousMenuItem = new MenuItem("Cautious");
+		MenuItem greedyMenuItem = new MenuItem("Greedy");
+		MenuItem randomMenuItem = new MenuItem("Random");
+		strategyMenu.getItems().addAll(cautiousMenuItem, greedyMenuItem, randomMenuItem);
+		
+		menuBar.getMenus().addAll(gameMenu, strategyMenu);
 	}
 
 	/**
