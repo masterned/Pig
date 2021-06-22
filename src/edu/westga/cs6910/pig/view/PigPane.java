@@ -105,10 +105,14 @@ public class PigPane extends BorderPane {
 		exitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
 		gameMenu.getItems().add(exitMenuItem);
 		
-		Menu strategyMenu = new Menu("Strategy");
-		MenuItem cautiousMenuItem = new MenuItem("Cautious");
-		MenuItem greedyMenuItem = new MenuItem("Greedy");
-		MenuItem randomMenuItem = new MenuItem("Random");
+		Menu strategyMenu = new Menu("_Strategy");
+		strategyMenu.setMnemonicParsing(true);
+		MenuItem cautiousMenuItem = new MenuItem("_Cautious");
+		cautiousMenuItem.setMnemonicParsing(true);
+		MenuItem greedyMenuItem = new MenuItem("_Greedy");
+		greedyMenuItem.setMnemonicParsing(true);
+		MenuItem randomMenuItem = new MenuItem("_Random");
+		randomMenuItem.setMnemonicParsing(true);
 		strategyMenu.getItems().addAll(cautiousMenuItem, greedyMenuItem, randomMenuItem);
 		
 		menuBar.getMenus().addAll(gameMenu, strategyMenu);
