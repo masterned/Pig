@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 
 /**
  * Provides unit testing to verify the expected behavior of ComputerPlayer's
@@ -21,7 +22,7 @@ public class TestWhenComputerPlayerIsCreated {
 	 */
 	@Test
 	public void testShouldProduceComputerPlayerWithNameSimpleComputerAndTotal0() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		assertEquals("Simple computer: total: 0, dice pair: die 1: pips: 1, die 2: pips: 1",
 				testComputerPlayer.toString());
 	}

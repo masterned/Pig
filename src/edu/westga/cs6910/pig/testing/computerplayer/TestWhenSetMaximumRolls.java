@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 
 /**
  * Provides unit testing to verify the expected behavior of ComputerPlayer's
@@ -21,7 +22,7 @@ public class TestWhenSetMaximumRolls {
 	 */
 	@Test
 	public void testWhenPassed5ShouldSetMaximumRollsTo5() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setMaximumRolls(5);
 		assertEquals(5, testComputerPlayer.getMaximumRolls());
 	}
@@ -32,7 +33,7 @@ public class TestWhenSetMaximumRolls {
 	 */
 	@Test
 	public void testWhenPassed34ShouldSetMaximumRollsTo34() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setMaximumRolls(34);
 		assertEquals(34, testComputerPlayer.getMaximumRolls());
 	}
@@ -43,7 +44,7 @@ public class TestWhenSetMaximumRolls {
 	 */
 	@Test
 	public void testWhenCalledWithNoArgumentsShouldSetMaximumRollsTo1() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setMaximumRolls();
 		assertEquals(1, testComputerPlayer.getMaximumRolls());
 	}

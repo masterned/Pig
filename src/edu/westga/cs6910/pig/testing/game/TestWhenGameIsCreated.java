@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 
@@ -23,7 +24,7 @@ public class TestWhenGameIsCreated {
 	 */
 	@Test
 	public void testShouldProduceGameWithGoalScore20AndGivenPlayers() {
-		Game testGame = new Game(new HumanPlayer("David Lightman"), new ComputerPlayer());
+		Game testGame = new Game(new HumanPlayer("David Lightman"), new ComputerPlayer(new CautiousStrategy()));
 		String expectedResult = "Goal Score: 20" + System.getProperty("line.separator") + "David Lightman: 0"
 				+ System.getProperty("line.separator") + "Simple computer: 0";
 		assertEquals(expectedResult, testGame.toString());
@@ -35,7 +36,7 @@ public class TestWhenGameIsCreated {
 	 */
 	@Test
 	public void testGoalConstructorAgainToPreventHardCoding() {
-		Game testGame = new Game(new HumanPlayer("Jennifer Mack"), new ComputerPlayer());
+		Game testGame = new Game(new HumanPlayer("Jennifer Mack"), new ComputerPlayer(new CautiousStrategy()));
 		String expectedResult = "Goal Score: 20" + System.getProperty("line.separator") + "Jennifer Mack: 0"
 				+ System.getProperty("line.separator") + "Simple computer: 0";
 		assertEquals(expectedResult, testGame.toString());

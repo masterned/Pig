@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 
 /**
  * Provides unit tests to verify the expected behavior of ComputerPlayer's
@@ -20,7 +21,7 @@ public class TestWhenGetDiceValues {
 	 */
 	@Test
 	public void testWithNewComputerPlayerShouldReturnStringOf1And1() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		assertEquals("1, 1", testComputerPlayer.getDiceValues());
 	}
 }

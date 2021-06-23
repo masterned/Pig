@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 
@@ -22,7 +23,7 @@ public class TestWhenIsGameOver {
 	 */
 	@Test
 	public void testWithNewGameShouldReturnTrue() {
-		Game testGame = new Game(new HumanPlayer("David Lightman"), new ComputerPlayer());
+		Game testGame = new Game(new HumanPlayer("David Lightman"), new ComputerPlayer(new CautiousStrategy()));
 		assertEquals(true, testGame.isGameOver());
 	}
 
@@ -31,8 +32,8 @@ public class TestWhenIsGameOver {
 	 */
 	@Test
 	public void testWithStartedGameShouldReturnFalse() {
-		Game testGame = new Game(new HumanPlayer("Jennifer Mack"), new ComputerPlayer());
-		testGame.startNewGame(new ComputerPlayer());
+		Game testGame = new Game(new HumanPlayer("Jennifer Mack"), new ComputerPlayer(new CautiousStrategy()));
+		testGame.startNewGame(new ComputerPlayer(new CautiousStrategy()));
 		assertEquals(false, testGame.isGameOver());
 	}
 
@@ -44,7 +45,7 @@ public class TestWhenIsGameOver {
 	public void testWithHumanPlayerWinnerShouldReturnTrue() {
 		HumanPlayer testHumanPlayer = new HumanPlayer("Stephen Falken");
 		testHumanPlayer.setTotal(20);
-		Game testGame = new Game(testHumanPlayer, new ComputerPlayer());
+		Game testGame = new Game(testHumanPlayer, new ComputerPlayer(new CautiousStrategy()));
 		assertEquals(true, testGame.isGameOver());
 	}
 
@@ -54,7 +55,7 @@ public class TestWhenIsGameOver {
 	 */
 	@Test
 	public void testWithComputerPlayerWinnerShouldReturnTrue() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setTotal(20);
 		Game testGame = new Game(new HumanPlayer("Jack Beringer"), testComputerPlayer);
 		assertEquals(true, testGame.isGameOver());

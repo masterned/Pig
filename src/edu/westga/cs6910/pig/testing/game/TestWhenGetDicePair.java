@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.DicePair;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
@@ -24,7 +25,7 @@ public class TestWhenGetDicePair {
 	 */
 	@Test
 	public void testWithNewGameShouldReturnNewDicePair() {
-		Game testGame = new Game(new HumanPlayer("David Lightman"), new ComputerPlayer());
+		Game testGame = new Game(new HumanPlayer("David Lightman"), new ComputerPlayer(new CautiousStrategy()));
 		assertEquals(new DicePair().toString(), testGame.getDicePair().toString());
 	}
 }

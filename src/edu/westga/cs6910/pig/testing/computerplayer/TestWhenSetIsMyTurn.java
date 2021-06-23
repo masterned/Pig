@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 
 /**
  * Provides unit testing to verify the expected behavior of ComputerPlayer's
@@ -20,7 +21,7 @@ public class TestWhenSetIsMyTurn {
 	 */
 	@Test
 	public void testShouldSetIsMyTurnToTrueWhenPassedTrue() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setIsMyTurn(true);
 		assertEquals(true, testComputerPlayer.getIsMyTurn());
 	}
@@ -31,7 +32,7 @@ public class TestWhenSetIsMyTurn {
 	 */
 	@Test
 	public void testWhenPassedFalseShouldSetIsMyTurnToFalseWhenAlreadyFalse() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setIsMyTurn(false);
 		assertEquals(false, testComputerPlayer.getIsMyTurn());
 	}
@@ -42,7 +43,7 @@ public class TestWhenSetIsMyTurn {
 	 */
 	@Test
 	public void testWhenPassedTrueShouldSetIsMyTurnToTrueWhenAlreadyTrue() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setIsMyTurn(true);
 		testComputerPlayer.setIsMyTurn(true);
 		assertEquals(true, testComputerPlayer.getIsMyTurn());
@@ -54,7 +55,7 @@ public class TestWhenSetIsMyTurn {
 	 */
 	@Test
 	public void testWhenPassedFalseShouldSetIsMyTurnToFalseWhenIsMyTurnIsTrue() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		testComputerPlayer.setIsMyTurn(true);
 		testComputerPlayer.setIsMyTurn(false);
 		assertEquals(false, testComputerPlayer.getIsMyTurn());

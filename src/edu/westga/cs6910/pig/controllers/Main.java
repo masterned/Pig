@@ -1,6 +1,7 @@
 package edu.westga.cs6910.pig.controllers;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 import edu.westga.cs6910.pig.view.PigPane;
@@ -16,10 +17,13 @@ import javafx.stage.Stage;
  *
  */
 public class Main extends Application {
+	/**
+	 * JavaFX uses this method as a starting-point to run the application.
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		primaryStage.setTitle("CS6910: Simple Pig");
-		Game theGame = new Game(new HumanPlayer("Human"), new ComputerPlayer());
+		Game theGame = new Game(new HumanPlayer("Human"), new ComputerPlayer(new CautiousStrategy()));
 
 		PigPane root = new PigPane(theGame);
 		Scene scene = new Scene(root, 700, 200);

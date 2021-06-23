@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.DicePair;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
@@ -25,7 +26,7 @@ public class TestWhenStartNewGame {
 	@Test
 	public void testWithNewGameShouldSetCurrentPlayerToProvidedPlayer() {
 		HumanPlayer testHumanPlayer = new HumanPlayer("David Lightman");
-		Game testGame = new Game(testHumanPlayer, new ComputerPlayer());
+		Game testGame = new Game(testHumanPlayer, new ComputerPlayer(new CautiousStrategy()));
 		testGame.startNewGame(testHumanPlayer);
 		assertEquals(testHumanPlayer, testGame.getCurrentPlayer());
 	}
@@ -37,19 +38,19 @@ public class TestWhenStartNewGame {
 	 */
 	@Test
 	public void testShouldSetCurrentPlayerToProvidedComputerPlayer() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		Game testGame = new Game(new HumanPlayer("Jennifer Mack"), testComputerPlayer);
 		testGame.startNewGame(testComputerPlayer);
 		assertEquals(testComputerPlayer, testGame.getCurrentPlayer());
 	}
-	
+
 	/**
 	 * Should reset the DicePair to a new set whenever the method is called.
 	 */
 	@Test
 	public void testShouldSetDicePairToNewDicePair() {
-		Game testGame = new Game(new HumanPlayer("Stephen Falken"), new ComputerPlayer());
-		testGame.startNewGame(new ComputerPlayer());
+		Game testGame = new Game(new HumanPlayer("Stephen Falken"), new ComputerPlayer(new CautiousStrategy()));
+		testGame.startNewGame(new ComputerPlayer(new CautiousStrategy()));
 		assertEquals(new DicePair().toString(), testGame.getDicePair().toString());
 	}
 }

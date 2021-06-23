@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 
@@ -23,7 +24,7 @@ public class TestWhenGetComputerPlayer {
 	 */
 	@Test
 	public void testWithNewGameShouldReturnComputerPlayerPassedIntoConstructor() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		Game testGame = new Game(new HumanPlayer("David Lightman"), testComputerPlayer);
 		assertEquals(testComputerPlayer, testGame.getComputerPlayer());
 	}

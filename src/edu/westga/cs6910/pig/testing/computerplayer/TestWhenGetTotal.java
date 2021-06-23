@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 
 /**
  * Provides unit tests to verify the expected behavior of ComputerPlayer's total
@@ -20,7 +21,7 @@ public class TestWhenGetTotal {
 	 */
 	@Test
 	public void testWithNewComputerPlayerShouldHaveTotalOf0() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		assertEquals(0, testComputerPlayer.getTotal());
 	}
 

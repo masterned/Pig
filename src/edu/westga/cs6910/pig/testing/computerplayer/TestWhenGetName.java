@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 
 /**
  * Provides unit testing to verify the expected behavior of ComputerPlayer's
@@ -16,12 +17,12 @@ import edu.westga.cs6910.pig.model.ComputerPlayer;
 public class TestWhenGetName {
 
 	/**
-	 * When getName is called on any ComputerPlayer (in its current implementation), it
-	 * should return "Simple computer"
+	 * When getName is called on any ComputerPlayer (in its current implementation),
+	 * it should return "Simple computer"
 	 */
 	@Test
 	public void testShouldReturnSimpleComputer() {
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		assertEquals("Simple computer", testComputerPlayer.getName());
 	}
 

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs6910.pig.model.ComputerPlayer;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 
@@ -23,7 +24,7 @@ public class TestWhenHold {
 	@Test
 	public void testWithHumanCurrentPlayerShouldsetCurrentPlayerToComputerPlayer() {
 		HumanPlayer testHumanPlayer = new HumanPlayer("David Lightman");
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		Game testGame = new Game(testHumanPlayer, testComputerPlayer);
 		testGame.startNewGame(testHumanPlayer);
 		testGame.hold();
@@ -37,7 +38,7 @@ public class TestWhenHold {
 	@Test
 	public void testWithComputerCurrentPlayerShouldsetCurrentPlayerToHumanPlayer() {
 		HumanPlayer testHumanPlayer = new HumanPlayer("David Lightman");
-		ComputerPlayer testComputerPlayer = new ComputerPlayer();
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
 		Game testGame = new Game(testHumanPlayer, testComputerPlayer);
 		testGame.startNewGame(testComputerPlayer);
 		testGame.hold();
