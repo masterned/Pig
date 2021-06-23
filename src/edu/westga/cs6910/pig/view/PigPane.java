@@ -3,6 +3,7 @@ package edu.westga.cs6910.pig.view;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.Player;
 import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
+import edu.westga.cs6910.pig.model.strategies.GreedyStrategy;
 import edu.westga.cs6910.pig.model.strategies.RandomStrategy;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -124,7 +125,7 @@ public class PigPane extends BorderPane {
 		RadioMenuItem greedyMenuItem = new RadioMenuItem("_Greedy");
 		greedyMenuItem.setMnemonicParsing(true);
 		greedyMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN));
-		greedyMenuItem.setOnAction(actionEvent -> System.out.println("Greedy Strategy Activated"));
+		greedyMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(new GreedyStrategy()));
 		greedyMenuItem.setToggleGroup(strategiesToggleGroup);
 		
 		RadioMenuItem randomMenuItem = new RadioMenuItem("_Random");
