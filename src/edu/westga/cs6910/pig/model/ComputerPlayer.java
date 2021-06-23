@@ -68,7 +68,9 @@ public class ComputerPlayer extends AbstractPlayer {
 	public void takeTurn() {
 		this.resetTurnTotal();
 
-		for (int count = 0; count < this.maximumRolls; count++) {
+		int rollCount = 0;
+
+		do {
 			this.rollDice();
 
 			if (this.hasRolledAOne()) {
@@ -78,7 +80,9 @@ public class ComputerPlayer extends AbstractPlayer {
 			} else {
 				this.addDiceToTurnTotal();
 			}
-		}
+
+			rollCount++;
+		} while (this.selectedStrategy.rollAgain(rollCount, this.getTurnTotal(), 20 - this.getTotal()));
 
 		this.addTurnTotalToTotal();
 		this.setIsMyTurn(false);
