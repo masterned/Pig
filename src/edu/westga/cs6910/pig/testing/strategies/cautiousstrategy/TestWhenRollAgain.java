@@ -24,19 +24,20 @@ public class TestWhenRollAgain {
 	@Test
 	public void testShouldAlwaysReturnFalseNoMatterTheInput() {
 		CautiousStrategy testCautiousStrategy = new CautiousStrategy();
-		
+
 		assertEquals(false, testCautiousStrategy.rollAgain(0, 0, 0));
 	}
-	
+
 	/**
 	 * Test the method again with random values.
 	 */
 	@Test
 	public void testShouldReturnFalseWhenPassedRandomValues() {
 		CautiousStrategy testCautiousStrategy = new CautiousStrategy();
-		
+
 		Random randomizer = new Random();
-		
-		assertEquals(false, testCautiousStrategy.rollAgain(randomizer.nextInt(), randomizer.nextInt(), randomizer.nextInt()));
+
+		assertEquals(false,
+				testCautiousStrategy.rollAgain(randomizer.nextInt(), randomizer.nextInt(), randomizer.nextInt()));
 	}
 }
