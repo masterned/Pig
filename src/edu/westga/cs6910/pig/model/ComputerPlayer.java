@@ -25,11 +25,11 @@ public class ComputerPlayer extends AbstractPlayer {
 	 */
 	public ComputerPlayer(PigStrategy specifiedStrategy) {
 		super(NAME);
-		
+
 		if (specifiedStrategy == null) {
 			throw new IllegalArgumentException("Specified strategy cannot be null");
 		}
-		
+
 		this.maximumRolls = 0;
 		this.selectedStrategy = specifiedStrategy;
 	}
@@ -82,5 +82,31 @@ public class ComputerPlayer extends AbstractPlayer {
 
 		this.addTurnTotalToTotal();
 		this.setIsMyTurn(false);
+	}
+
+	/**
+	 * Sets the computer's roll-again strategy to the provided strategy.
+	 * 
+	 * @param newStrategy - the strategy to change the computer to using
+	 * @throws IllegalArgumentException if provided strategy is null
+	 * @precondition newStrategy is not null
+	 * @postcondition newStrategy dictates ComputerPlayer's play style
+	 */
+	public void setStrategy(PigStrategy newStrategy) {
+		if (newStrategy == null) {
+			throw new IllegalArgumentException("Strategy cannot be null");
+		}
+
+		this.selectedStrategy = newStrategy;
+	}
+
+	/**
+	 * Primarily used for testing, this method returns the current strategy of the
+	 * ComputerPlayer.
+	 * 
+	 * @return the current strategy of the ComputerPlayer
+	 */
+	public PigStrategy getStrategy() {
+		return this.selectedStrategy;
 	}
 }
