@@ -2,6 +2,7 @@ package edu.westga.cs6910.pig.view;
 
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.Player;
+import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -116,7 +117,7 @@ public class PigPane extends BorderPane {
 		RadioMenuItem cautiousMenuItem = new RadioMenuItem("_Cautious");
 		cautiousMenuItem.setMnemonicParsing(true);
 		cautiousMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN));
-		cautiousMenuItem.setOnAction(actionEvent -> System.out.println("Cautious Strategy Activated"));
+		cautiousMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(new CautiousStrategy()));
 		cautiousMenuItem.setToggleGroup(strategiesToggleGroup);
 		
 		RadioMenuItem greedyMenuItem = new RadioMenuItem("_Greedy");
