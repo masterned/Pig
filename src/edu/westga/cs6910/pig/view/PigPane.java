@@ -4,6 +4,7 @@ import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.Player;
 import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.strategies.GreedyStrategy;
+import edu.westga.cs6910.pig.model.strategies.PigStrategy;
 import edu.westga.cs6910.pig.model.strategies.RandomStrategy;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -60,7 +61,7 @@ public class PigPane extends BorderPane {
 		this.addComputerPlayerPane(theGame);
 
 		this.setCenter(this.pnContent);
-		
+
 		this.addMenuBar();
 	}
 
@@ -95,48 +96,59 @@ public class PigPane extends BorderPane {
 		rightBox.getChildren().add(this.pnComputerPlayer);
 		this.pnContent.setRight(rightBox);
 	}
-	
-	private void addMenuBar() {
-		MenuBar menuBar = new MenuBar();
-		menuBar.prefWidthProperty().bind(this.widthProperty());
-		this.setTop(menuBar);
-		
-		Menu gameMenu = new Menu("_Game");
-		gameMenu.setMnemonicParsing(true);
-		
+
+	private MenuItem createExitMenuItem() {
 		MenuItem exitMenuItem = new MenuItem("E_xit");
 		exitMenuItem.setMnemonicParsing(true);
 		exitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
 		exitMenuItem.setOnAction(actionEvent -> System.exit(0));
-		
-		gameMenu.getItems().add(exitMenuItem);
-		
+		return exitMenuItem;
+	}
+
+	private RadioMenuItem createCautiousMenuItem(ToggleGroup strategiesToggleGroup) {
+		return this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(), strategiesToggleGroup);
+	}
+
+	private RadioMenuItem createGreedyMenuItem(ToggleGroup strategiesToggleGroup) {
+		return this.createStrategyMenuItem("_Greedy", KeyCode.E, new GreedyStrategy(), strategiesToggleGroup);
+	}
+
+	private RadioMenuItem createRandomMenuItem(ToggleGroup strategiesToggleGroup) {
+		return this.createStrategyMenuItem("_Random", KeyCode.R, new RandomStrategy(), strategiesToggleGroup);
+	}
+
+	private RadioMenuItem createStrategyMenuItem(String label, KeyCode accelerator, PigStrategy strategy,
+			ToggleGroup strategiesToggleGroup) {
+		RadioMenuItem randomMenuItem = new RadioMenuItem(label);
+		randomMenuItem.setMnemonicParsing(true);
+		randomMenuItem.setAccelerator(new KeyCodeCombination(accelerator, KeyCombination.SHORTCUT_DOWN));
+		randomMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(strategy));
+		randomMenuItem.setToggleGroup(strategiesToggleGroup);
+		return randomMenuItem;
+	}
+
+	private Menu createStrategyMenu() {
 		Menu strategyMenu = new Menu("_Strategy");
 		strategyMenu.setMnemonicParsing(true);
-		
+
 		ToggleGroup strategiesToggleGroup = new ToggleGroup();
-		
-		RadioMenuItem cautiousMenuItem = new RadioMenuItem("_Cautious");
-		cautiousMenuItem.setMnemonicParsing(true);
-		cautiousMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHORTCUT_DOWN));
-		cautiousMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(new CautiousStrategy()));
-		cautiousMenuItem.setToggleGroup(strategiesToggleGroup);
-		
-		RadioMenuItem greedyMenuItem = new RadioMenuItem("_Greedy");
-		greedyMenuItem.setMnemonicParsing(true);
-		greedyMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.SHORTCUT_DOWN));
-		greedyMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(new GreedyStrategy()));
-		greedyMenuItem.setToggleGroup(strategiesToggleGroup);
-		
-		RadioMenuItem randomMenuItem = new RadioMenuItem("_Random");
-		randomMenuItem.setMnemonicParsing(true);
-		randomMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
-		randomMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(new RandomStrategy()));
-		randomMenuItem.setToggleGroup(strategiesToggleGroup);
-		
-		strategyMenu.getItems().addAll(cautiousMenuItem, greedyMenuItem, randomMenuItem);
-		
-		menuBar.getMenus().addAll(gameMenu, strategyMenu);
+
+		strategyMenu.getItems().addAll(this.createCautiousMenuItem(strategiesToggleGroup),
+				this.createGreedyMenuItem(strategiesToggleGroup), this.createRandomMenuItem(strategiesToggleGroup));
+		return strategyMenu;
+	}
+
+	private void addMenuBar() {
+		MenuBar menuBar = new MenuBar();
+		menuBar.prefWidthProperty().bind(this.widthProperty());
+		this.setTop(menuBar);
+
+		Menu gameMenu = new Menu("_Game");
+		gameMenu.setMnemonicParsing(true);
+
+		gameMenu.getItems().add(this.createExitMenuItem());
+
+		menuBar.getMenus().addAll(gameMenu, this.createStrategyMenu());
 	}
 
 	/**
