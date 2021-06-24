@@ -17,12 +17,13 @@ public class TestWhenRollAgain {
 
 	/**
 	 * Verifies that it returns true if passed a number less than 3 for number of
-	 * rolls taken.
+	 * rolls taken and the difference between the accumulated score and the goal is
+	 * greater than 0.
 	 */
 	@Test
-	public void testShouldReturnTrueWhenRollsTakenLessThan3() {
+	public void testShouldReturnTrueWhenRollsTakenLessThan3AndDifferenceBetweenTotalAndGoalIsGreaterThan0() {
 		GreedyStrategy testGreedyStrategy = new GreedyStrategy();
-		assertEquals(true, testGreedyStrategy.rollAgain(0, 0, 0));
+		assertEquals(true, testGreedyStrategy.rollAgain(0, 0, 1));
 	}
 
 	/**
@@ -31,7 +32,7 @@ public class TestWhenRollAgain {
 	@Test
 	public void testShouldReturnFalseWhenRollsTakenEqualTo3() {
 		GreedyStrategy testGreedyStrategy = new GreedyStrategy();
-		assertEquals(false, testGreedyStrategy.rollAgain(3, 0, 0));
+		assertEquals(false, testGreedyStrategy.rollAgain(3, 0, 1));
 	}
 
 	/**
@@ -41,6 +42,26 @@ public class TestWhenRollAgain {
 	@Test
 	public void testShouldReturnFalesWhenRollsTakenGreaterThan3() {
 		GreedyStrategy testGreedyStrategy = new GreedyStrategy();
-		assertEquals(false, testGreedyStrategy.rollAgain(5, 0, 0));
+		assertEquals(false, testGreedyStrategy.rollAgain(5, 0, 1));
+	}
+
+	/**
+	 * Verifies that it returns false if the difference between current and goal
+	 * scores is zero.
+	 */
+	@Test
+	public void testShouldReturnFalseWhenTotalAndGoalScoreDifferenceIs0() {
+		GreedyStrategy testGreedyStrategy = new GreedyStrategy();
+		assertEquals(false, testGreedyStrategy.rollAgain(0, 0, 0));
+	}
+
+	/**
+	 * Verifies that it returns false if the difference between current and goal
+	 * scores is negative
+	 */
+	@Test
+	public void testShouldReturnFalseWhenTotalAndGoalScoreDifferenceIsNegative() {
+		GreedyStrategy testGreedyStrategy = new GreedyStrategy();
+		assertEquals(false, testGreedyStrategy.rollAgain(0, 0, -2));
 	}
 }
