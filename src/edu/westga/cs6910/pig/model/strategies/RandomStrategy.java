@@ -6,6 +6,8 @@ import java.util.Random;
  * This strategy causes the player to randomly decide whether or not they will
  * roll again.
  * 
+ * If they have already reached the goal, they do not.
+ * 
  * @author Spencer Dent
  * @version 2021-06-22
  */
@@ -18,6 +20,10 @@ public class RandomStrategy implements PigStrategy {
 	 */
 	@Override
 	public boolean rollAgain(int numberOfRollsTaken, int numberOfPointsRolled, int totalAndGoalScoreDifference) {
+		if (totalAndGoalScoreDifference <= 0) {
+			return false;
+		}
+		
 		return new Random().nextBoolean();
 	}
 
