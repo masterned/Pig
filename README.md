@@ -31,8 +31,5 @@ If anything pops-up, I'll add them here.
 ### Game's `play` & Player's `takeTurn` methods are not tested
 > Game's `play` relies on Player's `takeTurn`, and Player's `takeTurn` relies on `rollDice`. `rollDice` outputs a random number (not allowing a clean way of testing it). `rollDice`'s boundaries have already been tested. For the remaining portion of the two methods, I extracted the other chucks of logic and tested them individually. I am unsure of the best way to test the integration of all of the parts without use of inversion of control or mocking (techniques we have not gone over yet).
 
-### ComputerPlayer's `takeTurn` hard-codes the goal-score value when calling `PigStrategy.rollAgain`
-> I'm not sure we have a way of pulling this from the Game as of yet. I'm assuming we would have to do this with some kind of invalidation listener (maybe I'm missing something completely obvious) or pass it into the constructor. As we have not implemented a strategy yet that needs to use it, I feel as though the hard-coded value will be fine for now. I also wanted to follow your specification as closely as possible, so I decided it would not be wise to modify the constructor.
-
 ### RandomStrategy's `rollAgain` is not using `Math.random` as outlined in your note
 > I did diverge from the spec this time, though. I used java.util.Random to generate a random boolean rather than using Math.random to generate a random double and doing a comparison on it for the value. If I recall correctly, directly generating a random boolean is more performant, and it is a bit less error-prone.
