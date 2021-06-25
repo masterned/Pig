@@ -106,7 +106,9 @@ public class PigPane extends BorderPane {
 	}
 
 	private RadioMenuItem createCautiousMenuItem(ToggleGroup strategiesToggleGroup) {
-		return this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(), strategiesToggleGroup);
+		RadioMenuItem cautiousMenuItem = this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(), strategiesToggleGroup);
+		cautiousMenuItem.setSelected(true);
+		return cautiousMenuItem;
 	}
 
 	private RadioMenuItem createGreedyMenuItem(ToggleGroup strategiesToggleGroup) {
