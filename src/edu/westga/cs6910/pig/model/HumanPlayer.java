@@ -30,7 +30,7 @@ public class HumanPlayer extends AbstractPlayer {
 		this.rollDice();
 
 		if (this.hasRolledAOne()) {
-			this.setTotal(this.getTotal() - this.getTurnTotal());
+			this.removeTurnTotalFromTotal();
 			this.resetTurnTotal();
 			this.setIsMyTurn(false);
 		} else {
