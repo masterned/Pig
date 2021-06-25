@@ -6,8 +6,6 @@ import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.strategies.GreedyStrategy;
 import edu.westga.cs6910.pig.model.strategies.PigStrategy;
 import edu.westga.cs6910.pig.model.strategies.RandomStrategy;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -177,49 +175,28 @@ public class PigPane extends BorderPane {
 			this.setHgap(20);
 
 			this.radHumanPlayer = new RadioButton(this.theHuman.getName() + " first");
-			this.radHumanPlayer.setOnAction(new HumanFirstListener());
+			this.radHumanPlayer.setOnAction(actionEvent -> {
+				PigPane.this.pnChooseFirstPlayer.setDisable(true);
+				
+				PigPane.this.pnHumanPlayer.setDisable(false);
+				
+				PigPane.this.theGame.startNewGame(NewGamePane.this.theHuman);
+			});
 
 			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
-			this.radComputerPlayer.setOnAction(new ComputerFirstListener());
+			this.radComputerPlayer.setOnAction(actionEvent -> {
+				PigPane.this.pnChooseFirstPlayer.setDisable(true);
+				
+				PigPane.this.pnComputerPlayer.setDisable(false);
+				
+				PigPane.this.theGame.startNewGame(NewGamePane.this.theComputer);
+			});
 
 			ToggleGroup firstPlayerRadioButtonToggleGroup = new ToggleGroup();
 			firstPlayerRadioButtonToggleGroup.getToggles().addAll(this.radHumanPlayer, this.radComputerPlayer);
 
 			this.add(this.radHumanPlayer, 0, 0);
 			this.add(this.radComputerPlayer, 1, 0);
-		}
-
-		/**
-		 * Defines the listener for computer player first button.
-		 */
-		private class ComputerFirstListener implements EventHandler<ActionEvent> {
-			@Override
-			/**
-			 * Enables the ComputerPlayerPanel and starts a new game. Event handler for a
-			 * click in the computerPlayerButton.
-			 */
-			public void handle(ActionEvent arg0) {
-				PigPane.this.pnComputerPlayer.setDisable(false);
-				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-				PigPane.this.theGame.startNewGame(NewGamePane.this.theComputer);
-			}
-		}
-
-		/**
-		 * Defines the listener for human player first button.
-		 */
-		private class HumanFirstListener implements EventHandler<ActionEvent> {
-			/**
-			 * Sets up user interface and starts a new game. Event handler for a click in
-			 * the human player button.
-			 */
-			@Override
-			public void handle(ActionEvent event) {
-				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-
-				PigPane.this.pnHumanPlayer.setDisable(false);
-				PigPane.this.theGame.startNewGame(NewGamePane.this.theHuman);
-			}
 		}
 	}
 }
