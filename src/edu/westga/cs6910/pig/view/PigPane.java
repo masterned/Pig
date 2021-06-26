@@ -75,6 +75,7 @@ public class PigPane extends BorderPane {
 		HBox leftBox = new HBox();
 		leftBox.getStyleClass().add("pane-border");
 		this.pnHumanPlayer = new HumanPane(theGame);
+		this.pnHumanPlayer.setDisable(true);
 		leftBox.getChildren().add(this.pnHumanPlayer);
 		this.pnContent.setLeft(leftBox);
 	}
@@ -91,6 +92,7 @@ public class PigPane extends BorderPane {
 		HBox rightBox = new HBox();
 		rightBox.getStyleClass().add("pane-border");
 		this.pnComputerPlayer = new ComputerPane(theGame);
+		this.pnComputerPlayer.setDisable(true);
 		rightBox.getChildren().add(this.pnComputerPlayer);
 		this.pnContent.setRight(rightBox);
 	}
