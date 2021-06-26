@@ -31,11 +31,10 @@ public class HumanPlayer extends AbstractPlayer {
 
 		if (this.hasRolledAOne()) {
 			this.removeTurnTotalFromTotal();
-			this.resetTurnTotal();
 			this.setIsMyTurn(false);
 		} else {
 			this.addDiceToTurnTotal();
-			this.addTurnTotalToTotal();
+			this.addDiceToTotal();
 			this.setIsMyTurn(true);
 		}
 	}

@@ -153,12 +153,19 @@ public abstract class AbstractPlayer implements Player {
 	public void addTurnTotalToTotal() {
 		this.total += this.turnTotal;
 	}
-	
+
 	/**
 	 * Subtracts the turnTotal from the total.
 	 */
 	public void removeTurnTotalFromTotal() {
 		this.total -= this.turnTotal;
+	}
+
+	/**
+	 * Adds the dice total to the total.
+	 */
+	public void addDiceToTotal() {
+		this.total += this.thePair.getDie1Value() + this.thePair.getDie2Value();
 	}
 
 	@Override
