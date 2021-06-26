@@ -33,3 +33,6 @@ If anything pops-up, I'll add them here.
 
 ### RandomStrategy's `rollAgain` is not using `Math.random` as outlined in your note
 > I did diverge from the spec this time, though. I used java.util.Random to generate a random boolean rather than using Math.random to generate a random double and doing a comparison on it for the value. If I recall correctly, directly generating a random boolean is more performant, and it is a bit less error-prone.
+
+### Starting the game with both player panes disabled
+> In order to better match the demo you sent us, I changed the code to disable the player panes before the game starts.
