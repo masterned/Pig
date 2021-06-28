@@ -1,5 +1,7 @@
 package edu.westga.cs6910.pig.model;
 
+import java.util.Random;
+
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
@@ -57,6 +59,19 @@ public class Game implements Observable {
 		this.currentPlayerObject.setValue(firstPlayer);
 
 		this.thePair = new DicePair();
+	}
+
+	/**
+	 * Initializes the game for play. Selecting a random player to start
+	 */
+	public void startNewGameWithRandomFirstPlayer() {
+		boolean shouldStartWithHuman = (new Random()).nextBoolean();
+
+		if (shouldStartWithHuman) {
+			this.startNewGame(this.theHuman);
+		} else {
+			this.startNewGame(this.theComputer);
+		}
 	}
 
 	/**

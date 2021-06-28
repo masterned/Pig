@@ -1,11 +1,13 @@
 package edu.westga.cs6910.pig.view;
 
 import edu.westga.cs6910.pig.model.Game;
+import edu.westga.cs6910.pig.model.HumanPlayer;
 import edu.westga.cs6910.pig.model.Player;
 import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.strategies.GreedyStrategy;
 import edu.westga.cs6910.pig.model.strategies.PigStrategy;
 import edu.westga.cs6910.pig.model.strategies.RandomStrategy;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -106,7 +108,8 @@ public class PigPane extends BorderPane {
 	}
 
 	private RadioMenuItem createCautiousMenuItem(ToggleGroup strategiesToggleGroup) {
-		RadioMenuItem cautiousMenuItem = this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(), strategiesToggleGroup);
+		RadioMenuItem cautiousMenuItem = this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(),
+				strategiesToggleGroup);
 		cautiousMenuItem.setSelected(true);
 		return cautiousMenuItem;
 	}
@@ -160,6 +163,8 @@ public class PigPane extends BorderPane {
 		private RadioButton radHumanPlayer;
 		private RadioButton radComputerPlayer;
 
+		private Button randomPlayerSelectionButton;
+
 		private Game theGame;
 		private Player theHuman;
 		private Player theComputer;
@@ -179,26 +184,49 @@ public class PigPane extends BorderPane {
 			this.radHumanPlayer = new RadioButton(this.theHuman.getName() + " first");
 			this.radHumanPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-				
+
 				PigPane.this.pnHumanPlayer.setDisable(false);
-				
+
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theHuman);
 			});
 
 			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
 			this.radComputerPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-				
+
 				PigPane.this.pnComputerPlayer.setDisable(false);
-				
+
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theComputer);
 			});
 
 			ToggleGroup firstPlayerRadioButtonToggleGroup = new ToggleGroup();
 			firstPlayerRadioButtonToggleGroup.getToggles().addAll(this.radHumanPlayer, this.radComputerPlayer);
 
+			this.randomPlayerSelectionButton = new Button("Randomly Select First Player");
+			this.randomPlayerSelectionButton.setOnAction(actionEvent -> {
+
+				this.theGame.startNewGameWithRandomFirstPlayer();
+
+				Player currentPlayer = this.theGame.getCurrentPlayer();
+
+				if (currentPlayer instanceof HumanPlayer) {
+					this.radHumanPlayer.setSelected(true);
+					this.radComputerPlayer.setSelected(false);
+
+					PigPane.this.pnChooseFirstPlayer.setDisable(true);
+					PigPane.this.pnHumanPlayer.setDisable(false);
+				} else {
+					this.radComputerPlayer.setSelected(true);
+					this.radHumanPlayer.setSelected(false);
+
+					PigPane.this.pnChooseFirstPlayer.setDisable(true);
+					PigPane.this.pnComputerPlayer.setDisable(false);
+				}
+			});
+
 			this.add(this.radHumanPlayer, 0, 0);
 			this.add(this.radComputerPlayer, 1, 0);
+			this.add(this.randomPlayerSelectionButton, 2, 0);
 		}
 	}
 }
