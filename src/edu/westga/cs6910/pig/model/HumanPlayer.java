@@ -11,7 +11,7 @@ package edu.westga.cs6910.pig.model;
 public class HumanPlayer extends AbstractPlayer {
 
 	/**
-	 * Creates a new ComputerPlayer with the specified name.
+	 * Creates a new HumanPlayer with the specified name.
 	 * 
 	 * @param name this Player's name
 	 * 
