@@ -165,5 +165,16 @@ public abstract class AbstractPlayer implements Player {
 	/**
 	 * @see Player#takeTurn()
 	 */
-	public abstract void takeTurn();
+	public void takeTurn() {
+		this.rollDice();
+
+		if (this.hasRolledAOne()) {
+			this.removeTurnTotalFromTotal();
+			this.setIsMyTurn(false);
+		} else {
+			this.addDiceToTurnTotal();
+			this.addDiceToTotal();
+			this.setIsMyTurn(true);
+		}
+	}
 }

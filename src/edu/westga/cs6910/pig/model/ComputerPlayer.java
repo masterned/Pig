@@ -74,16 +74,7 @@ public class ComputerPlayer extends AbstractPlayer {
 		do {
 			rollCount++;
 
-			this.rollDice();
-
-			if (this.hasRolledAOne()) {
-				this.removeTurnTotalFromTotal();
-				this.setIsMyTurn(false);
-			} else {
-				this.addDiceToTurnTotal();
-				this.addDiceToTotal();
-				this.setIsMyTurn(true);
-			}
+			super.takeTurn();
 
 		} while (this.getIsMyTurn()
 				&& this.selectedStrategy.rollAgain(rollCount, this.getTurnTotal(), Game.GOAL_SCORE - this.getTotal()));

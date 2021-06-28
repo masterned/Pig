@@ -21,21 +21,4 @@ public class HumanPlayer extends AbstractPlayer {
 	public HumanPlayer(String name) {
 		super(name);
 	}
-
-	@Override
-	/**
-	 * @see Player#takeTurn()
-	 */
-	public void takeTurn() {
-		this.rollDice();
-
-		if (this.hasRolledAOne()) {
-			this.removeTurnTotalFromTotal();
-			this.setIsMyTurn(false);
-		} else {
-			this.addDiceToTurnTotal();
-			this.addDiceToTotal();
-			this.setIsMyTurn(true);
-		}
-	}
 }
