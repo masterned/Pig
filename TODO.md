@@ -5,3 +5,4 @@
 * [x] remove unused methods and tests in `AbstractPlayer` class
 * [ ] generate write-up for random first-player selection
 * [ ] refine random first-player selection implementation
+* [ ] extract Menus creation into separate internal classes
