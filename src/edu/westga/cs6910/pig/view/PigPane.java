@@ -3,20 +3,10 @@ package edu.westga.cs6910.pig.view;
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 import edu.westga.cs6910.pig.model.Player;
-import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
-import edu.westga.cs6910.pig.model.strategies.GreedyStrategy;
-import edu.westga.cs6910.pig.model.strategies.PigStrategy;
-import edu.westga.cs6910.pig.model.strategies.RandomStrategy;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -99,61 +89,10 @@ public class PigPane extends BorderPane {
 		this.pnContent.setRight(rightBox);
 	}
 
-	private MenuItem createExitMenuItem() {
-		MenuItem exitMenuItem = new MenuItem("E_xit");
-		exitMenuItem.setMnemonicParsing(true);
-		exitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
-		exitMenuItem.setOnAction(actionEvent -> System.exit(0));
-		return exitMenuItem;
-	}
-
-	private RadioMenuItem createCautiousMenuItem(ToggleGroup strategiesToggleGroup) {
-		RadioMenuItem cautiousMenuItem = this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(),
-				strategiesToggleGroup);
-		cautiousMenuItem.setSelected(true);
-		return cautiousMenuItem;
-	}
-
-	private RadioMenuItem createGreedyMenuItem(ToggleGroup strategiesToggleGroup) {
-		return this.createStrategyMenuItem("Gr_eedy", KeyCode.E, new GreedyStrategy(), strategiesToggleGroup);
-	}
-
-	private RadioMenuItem createRandomMenuItem(ToggleGroup strategiesToggleGroup) {
-		return this.createStrategyMenuItem("_Random", KeyCode.R, new RandomStrategy(), strategiesToggleGroup);
-	}
-
-	private RadioMenuItem createStrategyMenuItem(String label, KeyCode accelerator, PigStrategy strategy,
-			ToggleGroup strategiesToggleGroup) {
-		RadioMenuItem randomMenuItem = new RadioMenuItem(label);
-		randomMenuItem.setMnemonicParsing(true);
-		randomMenuItem.setAccelerator(new KeyCodeCombination(accelerator, KeyCombination.SHORTCUT_DOWN));
-		randomMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(strategy));
-		randomMenuItem.setToggleGroup(strategiesToggleGroup);
-		return randomMenuItem;
-	}
-
-	private Menu createStrategyMenu() {
-		Menu strategyMenu = new Menu("_Strategy");
-		strategyMenu.setMnemonicParsing(true);
-
-		ToggleGroup strategiesToggleGroup = new ToggleGroup();
-
-		strategyMenu.getItems().addAll(this.createCautiousMenuItem(strategiesToggleGroup),
-				this.createGreedyMenuItem(strategiesToggleGroup), this.createRandomMenuItem(strategiesToggleGroup));
-		return strategyMenu;
-	}
-
 	private void addMenuBar() {
-		MenuBar menuBar = new MenuBar();
+		MenuBar menuBar = new PigMenuBar(this.theGame);
 		menuBar.prefWidthProperty().bind(this.widthProperty());
 		this.setTop(menuBar);
-
-		Menu gameMenu = new Menu("_Game");
-		gameMenu.setMnemonicParsing(true);
-
-		gameMenu.getItems().add(this.createExitMenuItem());
-
-		menuBar.getMenus().addAll(gameMenu, this.createStrategyMenu());
 	}
 
 	/**
