@@ -148,13 +148,6 @@ public abstract class AbstractPlayer implements Player {
 	}
 
 	/**
-	 * Adds the turnTotal to the total.
-	 */
-	public void addTurnTotalToTotal() {
-		this.total += this.turnTotal;
-	}
-
-	/**
 	 * Subtracts the turnTotal from the total.
 	 */
 	public void removeTurnTotalFromTotal() {
