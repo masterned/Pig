@@ -1,5 +1,5 @@
 # TODO
-* [ ] consolidate players' `takeTurns` methods
+* [x] consolidate players' `takeTurns` methods
 * [x] test `Player.addDiceToTotal` method
 * [ ] refactor ambiguous names
 * [ ] use `maximumRolls` instance variable?
