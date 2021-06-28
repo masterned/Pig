@@ -66,25 +66,27 @@ public class ComputerPlayer extends AbstractPlayer {
 	 * @see Player#takeTurn()
 	 */
 	public void takeTurn() {
+
 		this.resetTurnTotal();
 
 		int rollCount = 0;
 
 		do {
-			this.rollDice();
 			rollCount++;
+
+			this.rollDice();
 
 			if (this.hasRolledAOne()) {
 				this.removeTurnTotalFromTotal();
 				this.setIsMyTurn(false);
-				return;
 			} else {
 				this.addDiceToTurnTotal();
 				this.addDiceToTotal();
+				this.setIsMyTurn(true);
 			}
 
-		} while (this.selectedStrategy.rollAgain(rollCount, this.getTurnTotal(),
-				Game.GOAL_SCORE - this.getTotal()));
+		} while (this.getIsMyTurn()
+				&& this.selectedStrategy.rollAgain(rollCount, this.getTurnTotal(), Game.GOAL_SCORE - this.getTotal()));
 
 		this.setIsMyTurn(false);
 	}
