@@ -170,6 +170,7 @@ public abstract class AbstractPlayer implements Player {
 
 		if (this.hasRolledAOne()) {
 			this.removeTurnTotalFromTotal();
+			this.resetTurnTotal();
 			this.setIsMyTurn(false);
 		} else {
 			this.addDiceToTurnTotal();
