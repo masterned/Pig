@@ -27,6 +27,6 @@ public class PigMenuBar extends MenuBar {
 	}
 
 	private void buildMenuBar() {
-		this.getMenus().addAll(new GameMenu(), new StrategyMenu(this.theGame));
+		this.getMenus().addAll(new GameMenu(this.theGame), new StrategyMenu(this.theGame));
 	}
 }
