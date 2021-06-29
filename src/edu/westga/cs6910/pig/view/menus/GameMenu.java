@@ -42,8 +42,16 @@ public class GameMenu extends Menu {
 
 		this.newGameMenuItem = new GameMenuItem("_New Game", KeyCode.N,
 		  actionEvent -> this.theGame.startNewGameWithPreviousFirstPlayer());
+		this.newGameMenuItem.setDisable(true);
 
 		this.getItems().addAll(this.exitMenuItem, this.restartMenuItem, this.newGameMenuItem);
+	}
+	
+	/**
+	 * Toggles whether the NewGameMenuItem is enabled. To be used after the game has started.
+	 */
+	public void toggleEnabledNewGameMenuItem() {
+		this.newGameMenuItem.setDisable(!this.newGameMenuItem.isDisable());
 	}
 
 	private class GameMenuItem extends MenuItem {

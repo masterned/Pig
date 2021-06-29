@@ -15,6 +15,9 @@ public class PigMenuBar extends MenuBar {
 
 	private Game theGame;
 
+	private GameMenu gameMenu;
+	private StrategyMenu strategyMenu;
+
 	/**
 	 * Creates a new MenuBar to be attached to the Pig Game window.
 	 * 
@@ -23,6 +26,16 @@ public class PigMenuBar extends MenuBar {
 	public PigMenuBar(Game theGame) {
 		this.theGame = theGame;
 
-		this.getMenus().addAll(new GameMenu(this.theGame), new StrategyMenu(this.theGame));
+		this.gameMenu = new GameMenu(this.theGame);
+		this.strategyMenu = new StrategyMenu(this.theGame);
+
+		this.getMenus().addAll(this.gameMenu, this.strategyMenu);
+	}
+
+	/**
+	 * Toggles whether GameMenu's NewGameMenuItem is enabled.
+	 */
+	public void toggleEnabledNewGameGameMenuItem() {
+		this.gameMenu.toggleEnabledNewGameMenuItem();
 	}
 }

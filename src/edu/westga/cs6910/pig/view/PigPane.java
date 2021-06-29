@@ -4,7 +4,6 @@ import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 import edu.westga.cs6910.pig.model.Player;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -27,6 +26,8 @@ public class PigPane extends BorderPane {
 	private ComputerPane pnComputerPlayer;
 	private StatusPane pnGameInfo;
 	private Pane pnChooseFirstPlayer;
+	
+	private PigMenuBar menuBar;
 
 	/**
 	 * Creates a pane object to provide the view for the specified Game model
@@ -90,9 +91,9 @@ public class PigPane extends BorderPane {
 	}
 
 	private void addMenuBar() {
-		MenuBar menuBar = new PigMenuBar(this.theGame);
-		menuBar.prefWidthProperty().bind(this.widthProperty());
-		this.setTop(menuBar);
+		this.menuBar = new PigMenuBar(this.theGame);
+		this.menuBar.prefWidthProperty().bind(this.widthProperty());
+		this.setTop(this.menuBar);
 	}
 
 	/**
@@ -123,6 +124,8 @@ public class PigPane extends BorderPane {
 			this.radHumanPlayer = new RadioButton(this.theHuman.getName() + " first");
 			this.radHumanPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
+				
+				PigPane.this.menuBar.toggleEnabledNewGameGameMenuItem();
 
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theHuman);
 			});
@@ -130,6 +133,8 @@ public class PigPane extends BorderPane {
 			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
 			this.radComputerPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
+				
+				PigPane.this.menuBar.toggleEnabledNewGameGameMenuItem();
 
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theComputer);
 			});
@@ -144,17 +149,17 @@ public class PigPane extends BorderPane {
 
 				Player currentPlayer = this.theGame.getCurrentPlayer();
 
+				PigPane.this.pnChooseFirstPlayer.setDisable(true);
+				
+				PigPane.this.menuBar.toggleEnabledNewGameGameMenuItem();
+				
 				if (currentPlayer instanceof HumanPlayer) {
 					this.radHumanPlayer.setSelected(true);
-					this.radComputerPlayer.setSelected(false);
 
-					PigPane.this.pnChooseFirstPlayer.setDisable(true);
 					PigPane.this.pnHumanPlayer.setDisable(false);
 				} else {
 					this.radComputerPlayer.setSelected(true);
-					this.radHumanPlayer.setSelected(false);
 
-					PigPane.this.pnChooseFirstPlayer.setDisable(true);
 					PigPane.this.pnComputerPlayer.setDisable(false);
 				}
 			});
