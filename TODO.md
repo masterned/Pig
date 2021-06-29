@@ -8,6 +8,7 @@
 * [ ] __test new methods__
     * [ ] reset Die, DicePair, Dice
     * [ ] resetScores
+    * [ ] getGameOverIndicator
 * [ ] dynamically size window to content?
 
 ## Random First Player Selection
@@ -20,7 +21,7 @@
 * [x] store selected first player
 * [x] reset scores & dice on new game
 * [x] start game with original first player
-* [ ] hide start new game button until end of game
+* [x] hide start new game button until end of game
 * [ ] bind panel disabling to Players' isMyTurn variable?
 * [ ] bind chosen player radio buttons to players' isMyTurn variables?
 * [ ] randomize first player if random initially selected?
