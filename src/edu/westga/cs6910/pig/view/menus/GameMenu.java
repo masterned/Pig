@@ -20,7 +20,6 @@ public class GameMenu extends Menu {
 	private Game theGame;
 
 	private MenuItem exitMenuItem;
-	private MenuItem restartMenuItem;
 	private MenuItem newGameMenuItem;
 	
 	/**
@@ -37,14 +36,11 @@ public class GameMenu extends Menu {
 
 		this.exitMenuItem = new GameMenuItem("E_xit", KeyCode.X, actionEvent -> System.exit(0));
 
-		this.restartMenuItem = new GameMenuItem("Res_tart", KeyCode.T,
-		  actionEvent -> System.out.println("Restarting game"));
-
 		this.newGameMenuItem = new GameMenuItem("_New Game", KeyCode.N,
 		  actionEvent -> this.theGame.startNewGameWithPreviousFirstPlayer());
 		this.newGameMenuItem.setDisable(true);
 
-		this.getItems().addAll(this.exitMenuItem, this.restartMenuItem, this.newGameMenuItem);
+		this.getItems().addAll(this.exitMenuItem, this.newGameMenuItem);
 	}
 	
 	/**
