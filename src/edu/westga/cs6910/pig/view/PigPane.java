@@ -124,16 +124,12 @@ public class PigPane extends BorderPane {
 			this.radHumanPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
 
-				PigPane.this.pnHumanPlayer.setDisable(false);
-
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theHuman);
 			});
 
 			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
 			this.radComputerPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-
-				PigPane.this.pnComputerPlayer.setDisable(false);
 
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theComputer);
 			});
