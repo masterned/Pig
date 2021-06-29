@@ -20,9 +20,13 @@ import javafx.scene.input.KeyCombination;
  */
 public class StrategyMenu extends Menu {
 
+	private Game theGame;
+
 	private ToggleGroup strategiesToggleGroup;
 
-	private Game theGame;
+	private RadioMenuItem cautiousMenuItem;
+	private RadioMenuItem greedyMenuItem;
+	private RadioMenuItem randomMenuItem;
 
 	/**
 	 * Creates a new strategy menu & adds MenuItems via private methods.
@@ -37,34 +41,24 @@ public class StrategyMenu extends Menu {
 
 		this.strategiesToggleGroup = new ToggleGroup();
 
-		this.getItems().addAll(this.createCautiousMenuItem(this.strategiesToggleGroup),
-				this.createGreedyMenuItem(this.strategiesToggleGroup),
-				this.createRandomMenuItem(this.strategiesToggleGroup));
+		this.cautiousMenuItem = new StrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy());
+		this.cautiousMenuItem.setSelected(true);
+
+		this.greedyMenuItem = new StrategyMenuItem("Gr_eedy", KeyCode.E, new GreedyStrategy());
+
+		this.randomMenuItem = new StrategyMenuItem("_Random", KeyCode.R, new RandomStrategy());
+
+		this.getItems().addAll(this.cautiousMenuItem, this.greedyMenuItem, this.randomMenuItem);
 	}
 
-	private RadioMenuItem createCautiousMenuItem(ToggleGroup strategiesToggleGroup) {
-		RadioMenuItem cautiousMenuItem = this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(),
-				strategiesToggleGroup);
-		cautiousMenuItem.setSelected(true);
-		return cautiousMenuItem;
-	}
-
-	private RadioMenuItem createGreedyMenuItem(ToggleGroup strategiesToggleGroup) {
-		return this.createStrategyMenuItem("Gr_eedy", KeyCode.E, new GreedyStrategy(), strategiesToggleGroup);
-	}
-
-	private RadioMenuItem createRandomMenuItem(ToggleGroup strategiesToggleGroup) {
-		return this.createStrategyMenuItem("_Random", KeyCode.R, new RandomStrategy(), strategiesToggleGroup);
-	}
-
-	private RadioMenuItem createStrategyMenuItem(String label, KeyCode accelerator, PigStrategy strategy,
-			ToggleGroup strategiesToggleGroup) {
-		RadioMenuItem randomMenuItem = new RadioMenuItem(label);
-		randomMenuItem.setMnemonicParsing(true);
-		randomMenuItem.setAccelerator(new KeyCodeCombination(accelerator, KeyCombination.SHORTCUT_DOWN));
-		randomMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(strategy));
-		randomMenuItem.setToggleGroup(strategiesToggleGroup);
-		return randomMenuItem;
+	private class StrategyMenuItem extends RadioMenuItem {
+		StrategyMenuItem(String label, KeyCode accelerator, PigStrategy strategy) {
+			super(label);
+			this.setMnemonicParsing(true);
+			this.setAccelerator(new KeyCodeCombination(accelerator, KeyCombination.SHORTCUT_DOWN));
+			this.setOnAction(actionEvent -> StrategyMenu.this.theGame.getComputerPlayer().setStrategy(strategy));
+			this.setToggleGroup(StrategyMenu.this.strategiesToggleGroup);
+		}
 	}
 
 }
