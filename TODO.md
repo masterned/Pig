@@ -10,6 +10,8 @@
     * [ ] resetScores
     * [ ] getGameOverIndicator
 * [ ] dynamically size window to content?
+* [ ] bind panel disabling to Players' isMyTurn variable?
+* [ ] bind chosen player radio buttons to players' isMyTurn variables?
 
 ## Random First Player Selection
 * [ ] refine random first-player selection implementation
@@ -22,12 +24,10 @@
 * [x] reset scores & dice on new game
 * [x] start game with original first player
 * [x] hide start new game button until end of game
-* [ ] bind panel disabling to Players' isMyTurn variable?
-* [ ] bind chosen player radio buttons to players' isMyTurn variables?
 * [ ] randomize first player if random initially selected?
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
-* [x] add New Game MenuItem to Game Menu (to reset mid game, acts like `Start New Game` button shown at game end)
+* [x] add New Game MenuItem to Game Menu
     * [x] add mnemonic
     * [x] add accelerator
     * [x] implementation
