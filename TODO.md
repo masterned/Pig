@@ -30,11 +30,11 @@
     * [x] add mnemonic
     * [x] add accelerator
     * [ ] implementation
-* [ ] add New Game MenuItem to Game Menu (to reset mid game, acts like `Start New Game` button shown at game end)
+* [x] add New Game MenuItem to Game Menu (to reset mid game, acts like `Start New Game` button shown at game end)
     * [x] add mnemonic
     * [x] add accelerator
     * [x] implementation
-    * [ ] disable until game start
+    * [x] disable until game start
 
 # MAYBE?
 * [ ] use PopupWindow for instructions & checkbox for opt-in
