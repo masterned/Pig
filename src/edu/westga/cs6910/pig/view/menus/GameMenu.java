@@ -13,9 +13,7 @@ import javafx.scene.input.KeyCombination;
  * @version 2021-06-29
  */
 public class GameMenu extends Menu {
-	
-	private MenuItem exitMenuItem;
-	
+
 	/**
 	 * The constructor, creates the Menu and calls private helper functions to add
 	 * the MenuItems.
@@ -23,18 +21,27 @@ public class GameMenu extends Menu {
 	public GameMenu() {
 		super("_Game");
 		this.setMnemonicParsing(true);
-		
-		this.exitMenuItem = new ExitMenuItem();
-		
-		this.getItems().addAll(this.exitMenuItem);
+
+		this.getItems().addAll(new ExitMenuItem(), new ResetMenuItem());
 	}
-	
+
 	private class ExitMenuItem extends MenuItem {
-		public ExitMenuItem() {
+		ExitMenuItem() {
 			super("E_xit");
 			this.setMnemonicParsing(true);
-			this.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));			
+			this.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
 			this.setOnAction(actionEvent -> System.exit(0));
+		}
+	}
+
+	private class ResetMenuItem extends MenuItem {
+		ResetMenuItem() {
+			super("_Reset");
+			this.setMnemonicParsing(true);
+			this.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.SHORTCUT_DOWN));
+			this.setOnAction(actionEvent -> {
+				System.out.println("Reset activated");
+			});
 		}
 	}
 }
