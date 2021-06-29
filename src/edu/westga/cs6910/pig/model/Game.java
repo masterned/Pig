@@ -182,6 +182,17 @@ public class Game implements Observable {
 	}
 
 	/**
+	 * Resets the scores of all the players.
+	 */
+	public void resetScores() {
+		this.theComputer.resetTurnTotal();
+		this.theComputer.setTotal(0);
+
+		this.theHuman.resetTurnTotal();
+		this.theHuman.setTotal(0);
+	}
+
+	/**
 	 * Resets the pair of dice to its original state.
 	 */
 	public void resetDice() {
