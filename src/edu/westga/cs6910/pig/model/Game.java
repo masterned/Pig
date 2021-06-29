@@ -4,7 +4,9 @@ import java.util.Random;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 /**
@@ -26,6 +28,7 @@ public class Game implements Observable {
 	private ComputerPlayer theComputer;
 
 	private Player firstPlayer;
+	private BooleanProperty gameOverIndicator;
 
 	private DicePair thePair;
 
@@ -44,6 +47,7 @@ public class Game implements Observable {
 		this.theComputer = theComputer;
 
 		this.currentPlayerObject = new SimpleObjectProperty<Player>();
+		this.gameOverIndicator = new SimpleBooleanProperty();
 
 		this.thePair = new DicePair();
 	}
@@ -68,6 +72,7 @@ public class Game implements Observable {
 	 */
 	public void startNewGame(Player firstPlayer) {
 		this.firstPlayer = firstPlayer;
+		this.gameOverIndicator.setValue(false);
 
 		this.resetDice();
 		this.resetScores();
@@ -161,6 +166,15 @@ public class Game implements Observable {
 	}
 
 	/**
+	 * Retrieves the gameOverIndicator boolean property.
+	 * 
+	 * @return gameOverIndicator - indicates if the game is over
+	 */
+	public BooleanProperty getGameOverIndicator() {
+		return this.gameOverIndicator;
+	}
+
+	/**
 	 * Return whether the game is over.
 	 * 
 	 * @return true iff currentPlayer.getTotal() >= GOAL_SCORE
@@ -171,8 +185,10 @@ public class Game implements Observable {
 		}
 
 		if (this.theHuman.getTotal() >= GOAL_SCORE || this.theComputer.getTotal() >= GOAL_SCORE) {
+			this.gameOverIndicator.setValue(true);
 			return true;
 		}
+
 		return false;
 	}
 

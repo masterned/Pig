@@ -53,7 +53,7 @@ public class StatusPane extends GridPane implements InvalidationListener {
 		bottomBox.getStyleClass().add("box-center");
 		bottomBox.getStyleClass().add("box-padding");
 		this.startNewGameButton = new Button("Start New Game");
-		this.startNewGameButton.setVisible(true);
+		this.startNewGameButton.visibleProperty().bind(this.theGame.getGameOverIndicator());
 		this.startNewGameButton.setOnAction(actionEvent -> this.theGame.startNewGameWithPreviousFirstPlayer());
 		bottomBox.getChildren().add(this.startNewGameButton);
 		this.add(bottomBox, 0, 2);
