@@ -33,10 +33,15 @@
     * [x] implementation
     * [x] disable until game start
 
+## Display list of rolled values
+* [ ] store rolls in ObservableArrayList
+* [ ] use ListView to display rolled values
+* [ ] reset list on each turn?
+* [ ] __generate write-up__
+* [ ] __add web guide entry__
+
 # MAYBE?
 * [ ] use PopupWindow for instructions & checkbox for opt-in
 * [ ] add spinner & message to indicate computer's turn & remove button
-* [ ] use ListView to display rolled values
 * [ ] change GamePanel goal label to number TextField, pull goal from Field, & disable Field in play
 * [ ] use DialogueBox from Game Menu to set goal before game start
-* [ ] add reset button to Game Menu
