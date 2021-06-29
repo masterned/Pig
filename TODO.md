@@ -8,6 +8,7 @@
 * [ ] __test new methods__
     * [ ] reset Die, DicePair, Dice
     * [ ] resetScores
+* [ ] dynamically size window to content?
 
 ## Random First Player Selection
 * [ ] refine random first-player selection implementation
@@ -23,7 +24,6 @@
 * [ ] bind panel disabling to Players' isMyTurn variable?
 * [ ] bind chosen player radio buttons to players' isMyTurn variables?
 * [ ] randomize first player if random initially selected?
-* [ ] dynamically size window to fix button?
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
 * [ ] add reset MenuItem to Game Menu (completely resets the game)?
