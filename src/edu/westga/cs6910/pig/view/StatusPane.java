@@ -1,8 +1,10 @@
 package edu.westga.cs6910.pig.view;
 
 import edu.westga.cs6910.pig.model.Game;
+import edu.westga.cs6910.pig.model.Player;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -18,6 +20,8 @@ import javafx.scene.layout.HBox;
 public class StatusPane extends GridPane implements InvalidationListener {
 	private Game theGame;
 	private Label lblStatus;
+	
+	private Button startNewGameButton;
 	
 	/**
 	 * Creates a new status pane that observes the specified game. 
@@ -46,6 +50,17 @@ public class StatusPane extends GridPane implements InvalidationListener {
 		this.lblStatus = new Label(this.theGame.toString());
 		middleBox.getChildren().add(this.lblStatus);
 		this.add(middleBox, 0, 1);
+		
+		HBox bottomBox = new HBox();
+		bottomBox.getStyleClass().add("box-center");
+		bottomBox.getStyleClass().add("box-padding");
+		this.startNewGameButton = new Button("Start New Game");
+		this.startNewGameButton.setVisible(true);
+		this.startNewGameButton.setOnAction(actionEvent -> {
+			this.theGame.startNewGame(this.theGame.getFirstPlayer());
+		});
+		bottomBox.getChildren().add(this.startNewGameButton);
+		this.add(bottomBox, 0, 2);
 	}
 
 	@Override

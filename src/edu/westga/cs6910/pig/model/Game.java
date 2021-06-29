@@ -25,6 +25,8 @@ public class Game implements Observable {
 	private HumanPlayer theHuman;
 	private ComputerPlayer theComputer;
 
+	private Player firstPlayer;
+
 	private DicePair thePair;
 
 	/**
@@ -47,6 +49,15 @@ public class Game implements Observable {
 	}
 
 	/**
+	 * Returns the Player the Game was started with.
+	 * 
+	 * @return firstPlayer
+	 */
+	public Player getFirstPlayer() {
+		return this.firstPlayer;
+	}
+
+	/**
 	 * Initializes the game for play.
 	 * 
 	 * @param firstPlayer the Player who takes the first turn
@@ -56,6 +67,12 @@ public class Game implements Observable {
 	 * @ensures whoseTurn().equals(firstPlayer) && firstPlayer.getTotal() == 0
 	 */
 	public void startNewGame(Player firstPlayer) {
+		this.firstPlayer = firstPlayer;
+		
+		this.resetDice();
+		this.resetScores();
+
+		this.currentPlayerObject.setValue(null);
 		this.currentPlayerObject.setValue(firstPlayer);
 
 		this.thePair = new DicePair();
