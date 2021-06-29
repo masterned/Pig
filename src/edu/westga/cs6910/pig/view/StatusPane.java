@@ -1,7 +1,6 @@
 package edu.westga.cs6910.pig.view;
 
 import edu.westga.cs6910.pig.model.Game;
-import edu.westga.cs6910.pig.model.Player;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.control.Button;
