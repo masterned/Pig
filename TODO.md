@@ -26,12 +26,14 @@
 * [ ] randomize first player if random initially selected?
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
-* [ ] add reset MenuItem to Game Menu (completely resets the game)?
-    * [ ] add mnemonic
-    * [ ] add accelerator
+* [ ] add Restart MenuItem to Game Menu (completely resets the game)?
+    * [x] add mnemonic
+    * [x] add accelerator
+    * [ ] implementation
 * [ ] add New Game MenuItem to Game Menu (to reset mid game)
-    * [ ] add mnemonic
-    * [ ] add accelerator
+    * [x] add mnemonic
+    * [x] add accelerator
+    * [ ] implementation
 
 # MAYBE?
 * [ ] use PopupWindow for instructions & checkbox for opt-in
