@@ -3,8 +3,8 @@
 * [x] consolidate players' `takeTurns` methods
 * [x] test `Player.addDiceToTotal` method
 * [x] remove unused methods and tests in `AbstractPlayer` class
+* [x] extract Menus
 * [ ] use `maximumRolls` instance variable?
-* [ ] extract Menus creation into separate internal classes
 * [ ] __test new methods__
     * [ ] reset Die, DicePair, Dice
     * [ ] resetScores
