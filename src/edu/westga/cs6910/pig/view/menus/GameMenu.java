@@ -22,7 +22,7 @@ public class GameMenu extends Menu {
 		super("_Game");
 		this.setMnemonicParsing(true);
 
-		this.getItems().addAll(new ExitMenuItem(), new RestartMenuItem());
+		this.getItems().addAll(new ExitMenuItem(), new RestartMenuItem(), new NewGameMenuItem());
 	}
 
 	private class ExitMenuItem extends MenuItem {
@@ -41,6 +41,17 @@ public class GameMenu extends Menu {
 			this.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.SHORTCUT_DOWN));
 			this.setOnAction(actionEvent -> {
 				System.out.println("Reset activated");
+			});
+		}
+	}
+
+	private class NewGameMenuItem extends MenuItem {
+		NewGameMenuItem() {
+			super("_New Game");
+			this.setMnemonicParsing(true);
+			this.setAccelerator(new KeyCodeCombination(KeyCode.N, KeyCombination.SHORTCUT_DOWN));
+			this.setOnAction(actionEvent -> {
+				System.out.println("Starting new game");
 			});
 		}
 	}
