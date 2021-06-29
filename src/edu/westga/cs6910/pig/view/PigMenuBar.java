@@ -1,18 +1,9 @@
 package edu.westga.cs6910.pig.view;
 
 import edu.westga.cs6910.pig.model.Game;
-import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
-import edu.westga.cs6910.pig.model.strategies.GreedyStrategy;
-import edu.westga.cs6910.pig.model.strategies.PigStrategy;
-import edu.westga.cs6910.pig.model.strategies.RandomStrategy;
 import edu.westga.cs6910.pig.view.menus.GameMenu;
-import javafx.scene.control.Menu;
+import edu.westga.cs6910.pig.view.menus.StrategyMenu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 
 /**
  * Creates the MenuBar for the Pig game window.
@@ -36,42 +27,6 @@ public class PigMenuBar extends MenuBar {
 	}
 
 	private void buildMenuBar() {
-		this.getMenus().addAll(new GameMenu(), this.createStrategyMenu());
-	}
-
-	private RadioMenuItem createCautiousMenuItem(ToggleGroup strategiesToggleGroup) {
-		RadioMenuItem cautiousMenuItem = this.createStrategyMenuItem("_Cautious", KeyCode.C, new CautiousStrategy(),
-				strategiesToggleGroup);
-		cautiousMenuItem.setSelected(true);
-		return cautiousMenuItem;
-	}
-
-	private RadioMenuItem createGreedyMenuItem(ToggleGroup strategiesToggleGroup) {
-		return this.createStrategyMenuItem("Gr_eedy", KeyCode.E, new GreedyStrategy(), strategiesToggleGroup);
-	}
-
-	private RadioMenuItem createRandomMenuItem(ToggleGroup strategiesToggleGroup) {
-		return this.createStrategyMenuItem("_Random", KeyCode.R, new RandomStrategy(), strategiesToggleGroup);
-	}
-
-	private RadioMenuItem createStrategyMenuItem(String label, KeyCode accelerator, PigStrategy strategy,
-			ToggleGroup strategiesToggleGroup) {
-		RadioMenuItem randomMenuItem = new RadioMenuItem(label);
-		randomMenuItem.setMnemonicParsing(true);
-		randomMenuItem.setAccelerator(new KeyCodeCombination(accelerator, KeyCombination.SHORTCUT_DOWN));
-		randomMenuItem.setOnAction(actionEvent -> this.theGame.getComputerPlayer().setStrategy(strategy));
-		randomMenuItem.setToggleGroup(strategiesToggleGroup);
-		return randomMenuItem;
-	}
-
-	private Menu createStrategyMenu() {
-		Menu strategyMenu = new Menu("_Strategy");
-		strategyMenu.setMnemonicParsing(true);
-
-		ToggleGroup strategiesToggleGroup = new ToggleGroup();
-
-		strategyMenu.getItems().addAll(this.createCautiousMenuItem(strategiesToggleGroup),
-				this.createGreedyMenuItem(strategiesToggleGroup), this.createRandomMenuItem(strategiesToggleGroup));
-		return strategyMenu;
+		this.getMenus().addAll(new GameMenu(), new StrategyMenu(this.theGame));
 	}
 }
