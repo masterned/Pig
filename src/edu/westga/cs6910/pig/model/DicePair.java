@@ -46,6 +46,14 @@ public class DicePair {
 		return this.die2.getNumberOfPips();
 	}
 
+	/**
+	 * Resets both of the dice to their initial states.
+	 */
+	public void reset() {
+		this.die1.reset();
+		this.die2.reset();
+	}
+
 	@Override
 	/**
 	 * Returns the String representation of the DicePair

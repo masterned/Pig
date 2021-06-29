@@ -182,6 +182,15 @@ public class Game implements Observable {
 	}
 
 	/**
+	 * Resets the pair of dice to its original state.
+	 */
+	public void resetDice() {
+		this.theHuman.getThePair().reset();
+		this.theComputer.getThePair().reset();
+		this.thePair.reset();
+	}
+
+	/**
 	 * Swaps the players so that the other player becomes the current player.
 	 */
 	private void swapWhoseTurn() {

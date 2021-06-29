@@ -41,4 +41,11 @@ public class Die {
 	public String toString() {
 		return "pips: " + this.getNumberOfPips();
 	}
+
+	/**
+	 * Resets the Die to the initial state.
+	 */
+	public void reset() {
+		this.numberShowing = 1;
+	}
 }
