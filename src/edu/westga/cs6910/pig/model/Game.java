@@ -68,7 +68,7 @@ public class Game implements Observable {
 	 */
 	public void startNewGame(Player firstPlayer) {
 		this.firstPlayer = firstPlayer;
-		
+
 		this.resetDice();
 		this.resetScores();
 
@@ -89,6 +89,14 @@ public class Game implements Observable {
 		} else {
 			this.startNewGame(this.theComputer);
 		}
+	}
+
+	/**
+	 * Initializes the game for play, starting with the first player from the
+	 * previous round.
+	 */
+	public void startNewGameWithPreviousFirstPlayer() {
+		this.startNewGame(this.firstPlayer);
 	}
 
 	/**
