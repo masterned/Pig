@@ -5,9 +5,9 @@ import edu.westga.cs6910.pig.model.strategies.CautiousStrategy;
 import edu.westga.cs6910.pig.model.strategies.GreedyStrategy;
 import edu.westga.cs6910.pig.model.strategies.PigStrategy;
 import edu.westga.cs6910.pig.model.strategies.RandomStrategy;
+import edu.westga.cs6910.pig.view.menus.GameMenu;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.KeyCode;
@@ -31,25 +31,12 @@ public class PigMenuBar extends MenuBar {
 	 */
 	public PigMenuBar(Game theGame) {
 		this.theGame = theGame;
-		
+
 		this.buildMenuBar();
 	}
-	
+
 	private void buildMenuBar() {
-		Menu gameMenu = new Menu("_Game");
-		gameMenu.setMnemonicParsing(true);
-
-		gameMenu.getItems().add(this.createExitMenuItem());
-
-		this.getMenus().addAll(gameMenu, this.createStrategyMenu());
-	}
-
-	private MenuItem createExitMenuItem() {
-		MenuItem exitMenuItem = new MenuItem("E_xit");
-		exitMenuItem.setMnemonicParsing(true);
-		exitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.SHORTCUT_DOWN));
-		exitMenuItem.setOnAction(actionEvent -> System.exit(0));
-		return exitMenuItem;
+		this.getMenus().addAll(new GameMenu(), this.createStrategyMenu());
 	}
 
 	private RadioMenuItem createCautiousMenuItem(ToggleGroup strategiesToggleGroup) {
