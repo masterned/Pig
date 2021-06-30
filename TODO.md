@@ -5,7 +5,12 @@
 * [x] remove unused methods and tests in `AbstractPlayer` class
 * [x] extract Menus
 * [ ] __test new methods__
-    * [ ] reset Die, DicePair, Dice, Scores, DiceValues
+    * [ ] reset
+        * [x] Die
+        * [x] DicePair
+    * [ ] resetDice
+    * [ ] resetScores
+    * [ ] clearDiceValues
     * [x] getGameOverIndicator
     * [x] rollDice
 
