@@ -250,9 +250,12 @@ public class Game implements Observable {
 	 * Swaps the players so that the other player becomes the current player.
 	 */
 	private void swapWhoseTurn() {
+		
 		if (this.currentPlayerObject.getValue().equals(this.theHuman)) {
+			this.theComputer.clearDiceValues();
 			this.currentPlayerObject.setValue(this.theComputer);
 		} else {
+			this.theHuman.clearDiceValues();
 			this.currentPlayerObject.setValue(this.theHuman);
 		}
 	}
