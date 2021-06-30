@@ -32,7 +32,6 @@ public class HumanPane extends AbstractPlayerPane {
 	public HumanPane(Game theGame) {
 		super(theGame, theGame.getHumanPlayer());
 		this.theGame = theGame;
-		this.theGame.addListener(this);
 
 		this.theHuman = this.theGame.getHumanPlayer();
 
