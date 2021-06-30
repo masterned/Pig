@@ -1,5 +1,7 @@
 package edu.westga.cs6910.pig.model;
 
+import javafx.collections.ObservableList;
+
 /**
  * Player defines the interface for players in the game Pig.
  * 
@@ -55,6 +57,13 @@ public interface Player {
 	 * @return The number of pips showing on the die that were just rolled
 	 */
 	String getDiceValues();
+	
+	/**
+	 * Returns the ObservableList of dice rolls
+	 * 
+	 * @return the list of rolls made by the Player
+	 */
+	ObservableList<String> getDiceRolls();
 
 	@Override
 	/**

@@ -2,10 +2,12 @@ package edu.westga.cs6910.pig.view;
 
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
+import edu.westga.cs6910.pig.model.Player;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
@@ -44,7 +46,7 @@ public class HumanPane extends GridPane implements InvalidationListener {
 		this.playerTitleBox = new PlayerTitleBox(this.theHuman.getName());
 		this.add(this.playerTitleBox, 0, 0, 2, 1);
 
-		this.diceValuesBox = new DiceValuesBox();
+		this.diceValuesBox = new DiceValuesBox(this.theHuman);
 		this.add(this.diceValuesBox, 0, 1);
 
 		this.buttonBox = new ButtonBox();
@@ -64,19 +66,24 @@ public class HumanPane extends GridPane implements InvalidationListener {
 	}
 
 	private class DiceValuesBox extends HBox {
+		
+		private Player thePlayer;
+		
 		private Label diceValuesHeader;
-		private Label diceValuesLabel;
+		private ListView<String> diceValuesListView;
 
-		DiceValuesBox() {
+		DiceValuesBox(Player thePlayer) {
 			super();
+			
+			this.thePlayer = thePlayer;
 
 			this.getStyleClass().add("box-padding");
 
 			this.diceValuesHeader = new Label("Dice Values: ");
 
-			this.diceValuesLabel = new Label("-, -");
+			this.diceValuesListView = new ListView<String>(this.thePlayer.getDiceRolls());
 
-			this.getChildren().addAll(this.diceValuesHeader, this.diceValuesLabel);
+			this.getChildren().addAll(this.diceValuesHeader, this.diceValuesListView);
 		}
 	}
 
@@ -144,8 +151,6 @@ public class HumanPane extends GridPane implements InvalidationListener {
 		boolean myTurn = this.theGame.getCurrentPlayer() == this.theHuman;
 
 		int turnTotal = this.theHuman.getTurnTotal();
-		String result = this.theHuman.getDiceValues();
-		this.diceValuesBox.diceValuesLabel.setText(result);
 		this.turnTotalBox.setTurnTotalValue(turnTotal);
 
 		this.setDisable(!myTurn);

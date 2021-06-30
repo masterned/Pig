@@ -1,5 +1,10 @@
 package edu.westga.cs6910.pig.model;
 
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * AbstractPlayer represents the concept of a Player. It includes
  * implementations of methods shared within all Player objects, reducing
@@ -15,6 +20,8 @@ public abstract class AbstractPlayer implements Player {
 
 	private boolean isMyTurn;
 
+	private ObservableList<String> rolls;
+
 	private int turnTotal;
 	private int total;
 
@@ -27,7 +34,11 @@ public abstract class AbstractPlayer implements Player {
 	public AbstractPlayer(String name) {
 		this.name = name;
 		this.thePair = new DicePair();
+
 		this.isMyTurn = false;
+
+		this.rolls = FXCollections.observableArrayList(new ArrayList<String>());
+
 		this.turnTotal = 0;
 		this.total = 0;
 	}
@@ -62,6 +73,7 @@ public abstract class AbstractPlayer implements Player {
 	 */
 	public void rollDice() {
 		this.thePair.rollDice();
+		this.rolls.add(this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value());
 	}
 
 	@Override
@@ -70,6 +82,14 @@ public abstract class AbstractPlayer implements Player {
 	 */
 	public String getDiceValues() {
 		return this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value();
+	}
+
+	@Override
+	/**
+	 * @see Player#getDiceRolls()
+	 */
+	public ObservableList<String> getDiceRolls() {
+		return this.rolls;
 	}
 
 	/**
