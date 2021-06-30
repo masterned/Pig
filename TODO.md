@@ -9,6 +9,7 @@
     * [ ] reset Die, DicePair, Dice
     * [ ] resetScores
     * [ ] getGameOverIndicator
+    * [ ] getDiceRolls
 * [ ] dynamically size window to content?
 * [ ] bind panel disabling to Players' isMyTurn variable?
 * [ ] bind chosen player radio buttons to players' isMyTurn variables?
@@ -39,6 +40,8 @@
 * [ ] reset list on new game
 * [ ] create AbstractPlayerPane for DRYness
 * [ ] resize ListView & Window for optimal display
+* [ ] always show most recent roll
+* [ ] replace `getDiceValues` method
 * [ ] reset list on each turn?
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
