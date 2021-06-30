@@ -36,7 +36,7 @@
 * [x] create AbstractPlayerPane for DRYness
 * [x] resize ListView & Window for optimal display
 * [x] always show most recent roll
-* [ ] replace `getDiceValues` method
+* [x] replace `getDiceValues` method
 * [ ] reset list on each turn?
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
