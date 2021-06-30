@@ -38,8 +38,8 @@
 * [x] store rolls in ObservableArrayList
 * [x] use ListView to display rolled values
 * [ ] reset list on new game
-* [ ] create AbstractPlayerPane for DRYness
-* [ ] resize ListView & Window for optimal display
+* [x] create AbstractPlayerPane for DRYness
+* [x] resize ListView & Window for optimal display
 * [ ] always show most recent roll
 * [ ] replace `getDiceValues` method
 * [ ] reset list on each turn?
