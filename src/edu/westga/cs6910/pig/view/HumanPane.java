@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Defines the panel that lets the user indicate whether they want to roll or
@@ -65,7 +66,7 @@ public class HumanPane extends GridPane implements InvalidationListener {
 		}
 	}
 
-	private class DiceValuesBox extends HBox {
+	private class DiceValuesBox extends VBox {
 		
 		private Player thePlayer;
 		
