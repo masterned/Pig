@@ -4,8 +4,10 @@ import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.Player;
 import javafx.beans.InvalidationListener;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Servers as a basis for the concrete Player Panes, extracting shared
@@ -18,8 +20,9 @@ public abstract class AbstractPlayerPane extends GridPane implements Invalidatio
 
 	private Game theGame;
 	private Player thePlayer;
-	
+
 	private HBox playerTitleBox;
+	private DiceValuesBox diceValuesBox;
 
 	/**
 	 * Contains functionality shared between all Player constructors.
@@ -30,19 +33,44 @@ public abstract class AbstractPlayerPane extends GridPane implements Invalidatio
 	public AbstractPlayerPane(Game theGame, Player thePlayer) {
 		this.theGame = theGame;
 		this.thePlayer = thePlayer;
-		
+
 		this.theGame.addListener(this);
-		
+
 		this.playerTitleBox = new PlayerTitleBox(this.thePlayer.getName());
 		this.add(this.playerTitleBox, 0, 0, 2, 1);
+		
+		this.diceValuesBox = new DiceValuesBox(this.thePlayer);
+		this.add(this.diceValuesBox, 0, 1);
 	}
-	
+
 	private class PlayerTitleBox extends HBox {
 		PlayerTitleBox(String playerName) {
 			super();
 			this.getStyleClass().add("box-center");
 			this.getStyleClass().add("box-padding");
 			this.getChildren().add(new Label("~~ " + playerName + " ~~"));
+		}
+	}
+
+	private class DiceValuesBox extends VBox {
+
+		private Player thePlayer;
+
+		private Label diceValuesHeader;
+		private ListView<String> diceValuesListView;
+
+		DiceValuesBox(Player thePlayer) {
+			super();
+
+			this.thePlayer = thePlayer;
+
+			this.getStyleClass().add("box-padding");
+
+			this.diceValuesHeader = new Label("Dice Values: ");
+
+			this.diceValuesListView = new ListView<String>(this.thePlayer.getDiceRolls());
+
+			this.getChildren().addAll(this.diceValuesHeader, this.diceValuesListView);
 		}
 	}
 }

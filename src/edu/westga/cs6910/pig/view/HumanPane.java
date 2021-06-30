@@ -2,13 +2,10 @@ package edu.westga.cs6910.pig.view;
 
 import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
-import edu.westga.cs6910.pig.model.Player;
 import javafx.beans.Observable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  * Defines the panel that lets the user indicate whether they want to roll or
@@ -24,7 +21,6 @@ public class HumanPane extends AbstractPlayerPane {
 	private Game theGame;
 	private HumanPlayer theHuman;
 
-	private DiceValuesBox diceValuesBox;
 	private ButtonBox buttonBox;
 	private TurnTotalBox turnTotalBox;
 
@@ -42,36 +38,11 @@ public class HumanPane extends AbstractPlayerPane {
 
 		this.theHuman = this.theGame.getHumanPlayer();
 
-		this.diceValuesBox = new DiceValuesBox(this.theHuman);
-		this.add(this.diceValuesBox, 0, 1);
-
 		this.buttonBox = new ButtonBox();
 		this.add(this.buttonBox, 0, 2);
 
 		this.turnTotalBox = new TurnTotalBox();
 		this.add(this.turnTotalBox, 0, 3);
-	}
-
-	private class DiceValuesBox extends VBox {
-		
-		private Player thePlayer;
-		
-		private Label diceValuesHeader;
-		private ListView<String> diceValuesListView;
-
-		DiceValuesBox(Player thePlayer) {
-			super();
-			
-			this.thePlayer = thePlayer;
-
-			this.getStyleClass().add("box-padding");
-
-			this.diceValuesHeader = new Label("Dice Values: ");
-
-			this.diceValuesListView = new ListView<String>(this.thePlayer.getDiceRolls());
-
-			this.getChildren().addAll(this.diceValuesHeader, this.diceValuesListView);
-		}
 	}
 
 	private class ButtonBox extends HBox {

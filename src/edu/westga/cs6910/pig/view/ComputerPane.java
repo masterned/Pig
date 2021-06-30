@@ -17,7 +17,6 @@ import javafx.scene.layout.HBox;
  * @version 2021-06-08
  */
 public class ComputerPane extends AbstractPlayerPane {
-	private Label lblDiceValues;
 	private Label lblTurnTotal;
 	private Button btnTakeTurn;
 
@@ -44,13 +43,6 @@ public class ComputerPane extends AbstractPlayerPane {
 	}
 
 	private void buildPane() {
-		HBox middleBox = new HBox();
-		middleBox.getStyleClass().add("box-padding");
-		middleBox.getChildren().add(new Label("Dice Values: "));
-		this.lblDiceValues = new Label("-, -");
-		middleBox.getChildren().add(this.lblDiceValues);
-		this.add(middleBox, 0, 1);
-
 		HBox buttonBox = new HBox();
 		buttonBox.getStyleClass().add("box-padding");
 		this.btnTakeTurn = new Button("Take Turn");
@@ -72,8 +64,6 @@ public class ComputerPane extends AbstractPlayerPane {
 
 		if (!myTurn) {
 			int turnTotal = this.theComputer.getTurnTotal();
-			String result = this.theComputer.getDiceValues();
-			this.lblDiceValues.setText(result);
 			this.lblTurnTotal.setText("" + turnTotal);
 		}
 
