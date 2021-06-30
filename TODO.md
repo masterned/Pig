@@ -4,17 +4,11 @@
 * [x] test `Player.addDiceToTotal` method
 * [x] remove unused methods and tests in `AbstractPlayer` class
 * [x] extract Menus
-* [ ] use `maximumRolls` instance variable?
 * [ ] __test new methods__
-    * [ ] reset Die, DicePair, Dice
-    * [ ] resetScores
+    * [ ] reset Die, DicePair, Dice, Scores, DiceValues
     * [ ] getGameOverIndicator
     * [ ] getDiceRolls
     * [ ] rollDice
-    * [ ] resetDiceValues
-* [ ] dynamically size window to content?
-* [ ] bind panel disabling to Players' isMyTurn variable?
-* [ ] bind chosen player radio buttons to players' isMyTurn variables?
 
 ## Random First Player Selection
 * [ ] __generate write-up__
@@ -47,8 +41,19 @@
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
 
-# MAYBE?
+## instructions display?
 * [ ] use PopupWindow for instructions & checkbox for opt-in
-* [ ] add spinner & message to indicate computer's turn & remove button
+
+## simulate ComputerPlayer's turn?
+* [ ] add spinner & message to indicate computer's turn
+* [ ] remove button
+
+## allow user to set Game goal?
 * [ ] change GamePanel goal label to number TextField, pull goal from Field, & disable Field in play
 * [ ] use DialogueBox from Game Menu to set goal before game start
+
+# MAYBE?
+* [ ] use `maximumRolls` instance variable?
+* [ ] dynamically size window to content?
+* [ ] bind panel disabling to Players' isMyTurn variable?
+* [ ] bind chosen player radio buttons to players' isMyTurn variables?
