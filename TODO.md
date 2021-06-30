@@ -17,7 +17,6 @@
 * [ ] bind chosen player radio buttons to players' isMyTurn variables?
 
 ## Random First Player Selection
-* [ ] refine random first-player selection implementation
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
 
