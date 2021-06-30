@@ -52,18 +52,11 @@ public interface Player {
 	int getTotal();
 
 	/**
-	 * Returns the number of pips showing on the die that were just rolled
-	 * 
-	 * @return The number of pips showing on the die that were just rolled
-	 */
-	String getDiceValues();
-
-	/**
-	 * Returns the ObservableList of dice rolls
+	 * Returns the ObservableList of the pips of all the dice rolls stored
 	 * 
 	 * @return the list of rolls made by the Player
 	 */
-	ObservableList<String> getDiceRolls();
+	ObservableList<String> getDiceValues();
 
 	/**
 	 * Clears the list of Dice values.

@@ -81,7 +81,7 @@ public abstract class AbstractPlayerPane extends GridPane implements Invalidatio
 
 			this.diceValuesHeader = new Label("Dice Values: ");
 
-			this.diceValuesListView = new ListView<String>(this.thePlayer.getDiceRolls());
+			this.diceValuesListView = new ListView<String>(this.thePlayer.getDiceValues());
 
 			this.getChildren().addAll(this.diceValuesHeader, this.diceValuesListView);
 		}

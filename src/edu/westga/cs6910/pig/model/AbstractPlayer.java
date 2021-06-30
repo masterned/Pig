@@ -80,15 +80,7 @@ public abstract class AbstractPlayer implements Player {
 	/**
 	 * @see Player#getDiceValues()
 	 */
-	public String getDiceValues() {
-		return this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value();
-	}
-
-	@Override
-	/**
-	 * @see Player#getDiceRolls()
-	 */
-	public ObservableList<String> getDiceRolls() {
+	public ObservableList<String> getDiceValues() {
 		return this.rolls;
 	}
 	
