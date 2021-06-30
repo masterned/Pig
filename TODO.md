@@ -42,7 +42,7 @@
 * [x] reset list on new game
 * [x] create AbstractPlayerPane for DRYness
 * [x] resize ListView & Window for optimal display
-* [ ] always show most recent roll
+* [x] always show most recent roll
 * [ ] replace `getDiceValues` method
 * [ ] reset list on each turn?
 * [ ] __generate write-up__
