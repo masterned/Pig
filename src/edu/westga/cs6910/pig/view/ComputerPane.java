@@ -3,8 +3,6 @@ package edu.westga.cs6910.pig.view;
 import edu.westga.cs6910.pig.model.ComputerPlayer;
 import edu.westga.cs6910.pig.model.Game;
 import javafx.beans.Observable;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
@@ -30,7 +28,7 @@ public class ComputerPane extends AbstractPlayerPane {
 	 */
 	public ComputerPane(Game theGame) {
 		super(theGame, theGame.getComputerPlayer());
-		
+
 		this.theGame = theGame;
 
 		this.theGame.addListener(this);
@@ -44,7 +42,12 @@ public class ComputerPane extends AbstractPlayerPane {
 		HBox buttonBox = new HBox();
 		buttonBox.getStyleClass().add("box-padding");
 		this.btnTakeTurn = new Button("Take Turn");
-		this.btnTakeTurn.setOnAction(new TakeTurnListener());
+		this.btnTakeTurn.setOnAction(actionEvent -> {
+			if (!ComputerPane.this.theGame.isGameOver()) {
+				ComputerPane.this.theComputer.setMaximumRolls();
+				ComputerPane.this.theGame.play();
+			}
+		});
 		buttonBox.getChildren().add(this.btnTakeTurn);
 		this.add(buttonBox, 0, 2);
 	}
@@ -63,26 +66,6 @@ public class ComputerPane extends AbstractPlayerPane {
 		if (this.theGame.isGameOver()) {
 			this.setDisable(true);
 			return;
-		}
-	}
-
-	/**
-	 * Defines the listener for takeTurnButton.
-	 */
-	private class TakeTurnListener implements EventHandler<ActionEvent> {
-
-		/**
-		 * Tells the Game to have its current player (i.e., the computer player) take
-		 * its turn.
-		 * 
-		 * @see javafx.event.EventHandler#handle(javafx.event.Event)
-		 */
-		@Override
-		public void handle(ActionEvent arg0) {
-			if (!ComputerPane.this.theGame.isGameOver()) {
-				ComputerPane.this.theComputer.setMaximumRolls();
-				ComputerPane.this.theGame.play();
-			}
 		}
 	}
 }
