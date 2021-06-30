@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
 /**
- * Defines the panel that lets the user indicate whether they want to roll or
+ * Defines the pane that lets the user indicate whether they want to roll or
  * hold on their turn
  * 
  * This class was started by CS6910

@@ -26,7 +26,7 @@ public class PigPane extends BorderPane {
 	private ComputerPane pnComputerPlayer;
 	private StatusPane pnGameInfo;
 	private Pane pnChooseFirstPlayer;
-	
+
 	private PigMenuBar menuBar;
 
 	/**
@@ -97,7 +97,7 @@ public class PigPane extends BorderPane {
 	}
 
 	/**
-	 * Defines the panel in which the user selects which Player plays first.
+	 * Defines the pane in which the user selects which Player plays first.
 	 */
 	private final class NewGamePane extends GridPane {
 		private RadioButton radHumanPlayer;
@@ -124,7 +124,7 @@ public class PigPane extends BorderPane {
 			this.radHumanPlayer = new RadioButton(this.theHuman.getName() + " first");
 			this.radHumanPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-				
+
 				PigPane.this.menuBar.toggleEnabledNewGameGameMenuItem();
 
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theHuman);
@@ -133,7 +133,7 @@ public class PigPane extends BorderPane {
 			this.radComputerPlayer = new RadioButton(this.theComputer.getName() + " first");
 			this.radComputerPlayer.setOnAction(actionEvent -> {
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-				
+
 				PigPane.this.menuBar.toggleEnabledNewGameGameMenuItem();
 
 				PigPane.this.theGame.startNewGame(NewGamePane.this.theComputer);
@@ -150,9 +150,9 @@ public class PigPane extends BorderPane {
 				Player currentPlayer = this.theGame.getCurrentPlayer();
 
 				PigPane.this.pnChooseFirstPlayer.setDisable(true);
-				
+
 				PigPane.this.menuBar.toggleEnabledNewGameGameMenuItem();
-				
+
 				if (currentPlayer instanceof HumanPlayer) {
 					this.radHumanPlayer.setSelected(true);
 
