@@ -34,13 +34,13 @@ public class GameMenu extends Menu {
 
 		this.theGame = theGame;
 
-		this.exitMenuItem = new GameMenuItem("E_xit", KeyCode.X, actionEvent -> System.exit(0));
-
 		this.newGameMenuItem = new GameMenuItem("_New Game", KeyCode.N,
 		  actionEvent -> this.theGame.startNewGameWithPreviousFirstPlayer());
 		this.newGameMenuItem.setDisable(true);
+		
+		this.exitMenuItem = new GameMenuItem("E_xit", KeyCode.X, actionEvent -> System.exit(0));
 
-		this.getItems().addAll(this.exitMenuItem, this.newGameMenuItem);
+		this.getItems().addAll(this.newGameMenuItem, this.exitMenuItem);
 	}
 	
 	/**
