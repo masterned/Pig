@@ -4,16 +4,14 @@ import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 /**
- * Defines the panel that lets the user indicate whether they want to 
- * 	roll or hold on their turn
+ * Defines the panel that lets the user indicate whether they want to roll or
+ * hold on their turn
  * 
  * This class was started by CS6910
  * 
@@ -21,61 +19,124 @@ import javafx.scene.layout.HBox;
  * @version 2021-06-09
  */
 public class HumanPane extends GridPane implements InvalidationListener {
-	private Label lblDiceValues;
-	private Button btnRoll;
-	private Button btnHold;
-	private Label lblTurnTotal;
-	
-	private HumanPlayer theHuman;
+
 	private Game theGame;
+	private HumanPlayer theHuman;
+
+	private HBox playerTitleBox;
+	private DiceValuesBox diceValuesBox;
+	private ButtonBox buttonBox;
+	private TurnTotalBox turnTotalBox;
 
 	/**
-	 * Creates a new HumanPane that observes the specified game. 
+	 * Creates a new HumanPane that observes the specified game.
 	 * 
-	 * @param theGame	the model object from which this pane gets its data
+	 * @param theGame the model object from which this pane gets its data
 	 * 
-	 * @requires 	theGame != null
+	 * @requires theGame != null
 	 */
 	public HumanPane(Game theGame) {
 		this.theGame = theGame;
 		this.theGame.addListener(this);
-		
-		this.theHuman = this.theGame.getHumanPlayer();
-		
-		this.buildPane();
-	}
-	
-	private void buildPane() {
-		HBox topBox = new HBox();
-		topBox.getStyleClass().add("box-center");	
-		topBox.getStyleClass().add("box-padding");
-		topBox.getChildren().add(new Label("~~ " + this.theHuman.getName() + " ~~"));
-		this.add(topBox, 0, 0, 2, 1);
-		
-		HBox middleBox = new HBox();
-		middleBox.getStyleClass().add("box-padding");		
-		middleBox.getChildren().add(new Label("Dice Values: "));
-		this.lblDiceValues = new Label("-, -");
-		middleBox.getChildren().add(this.lblDiceValues);
-		this.add(middleBox, 0, 1);
 
-		HBox buttonBox = new HBox();
-		buttonBox.getStyleClass().add("box-padding");
-		this.btnRoll = new Button("Roll");
-		this.btnRoll.setOnAction(new TakeTurnListener());
-		buttonBox.getChildren().add(this.btnRoll);
-		
-		this.btnHold = new Button("Hold");
-		this.btnHold.setOnAction(new HoldListener());
-		buttonBox.getChildren().add(this.btnHold);
-		this.add(buttonBox, 0, 2);
-		
-		HBox bottomBox = new HBox();
-		bottomBox.getStyleClass().add("box-padding");
-		bottomBox.getChildren().add(new Label("Turn Total: "));
-		this.lblTurnTotal = new Label("0");
-		bottomBox.getChildren().add(this.lblTurnTotal);
-		this.add(bottomBox, 0, 3);
+		this.theHuman = this.theGame.getHumanPlayer();
+
+		this.playerTitleBox = new PlayerTitleBox(this.theHuman.getName());
+		this.add(this.playerTitleBox, 0, 0, 2, 1);
+
+		this.diceValuesBox = new DiceValuesBox();
+		this.add(this.diceValuesBox, 0, 1);
+
+		this.buttonBox = new ButtonBox();
+		this.add(this.buttonBox, 0, 2);
+
+		this.turnTotalBox = new TurnTotalBox();
+		this.add(this.turnTotalBox, 0, 3);
+	}
+
+	private class PlayerTitleBox extends HBox {
+		PlayerTitleBox(String playerName) {
+			super();
+			this.getStyleClass().add("box-center");
+			this.getStyleClass().add("box-padding");
+			this.getChildren().add(new Label("~~ " + playerName + " ~~"));
+		}
+	}
+
+	private class DiceValuesBox extends HBox {
+		private Label diceValuesHeader;
+		private Label diceValuesLabel;
+
+		DiceValuesBox() {
+			super();
+
+			this.getStyleClass().add("box-padding");
+
+			this.diceValuesHeader = new Label("Dice Values: ");
+
+			this.diceValuesLabel = new Label("-, -");
+
+			this.getChildren().addAll(this.diceValuesHeader, this.diceValuesLabel);
+		}
+	}
+
+	private class ButtonBox extends HBox {
+		private Button rollButton;
+		private Button holdButton;
+
+		ButtonBox() {
+			super();
+			this.getStyleClass().add("box-padding");
+
+			this.buildRollButton();
+
+			this.buildHoldButton();
+
+			this.getChildren().addAll(this.rollButton, this.holdButton);
+		}
+
+		private void buildRollButton() {
+			this.rollButton = new Button("Roll");
+			this.rollButton.setOnAction(actionEvent -> {
+				if (!HumanPane.this.theGame.isGameOver()) {
+					HumanPane.this.theGame.play();
+				}
+			});
+		}
+
+		private void buildHoldButton() {
+			this.holdButton = new Button("Hold");
+			this.holdButton.setOnAction(actionEvent -> {
+				if (!HumanPane.this.theGame.isGameOver()) {
+					HumanPane.this.theGame.hold();
+				}
+			});
+		}
+	}
+
+	private class TurnTotalBox extends HBox {
+		private Label turnTotalHeader;
+		private Label turnTotalLabel;
+
+		TurnTotalBox() {
+			super();
+			this.getStyleClass().add("box-padding");
+
+			this.turnTotalHeader = new Label("Turn Total: ");
+
+			this.turnTotalLabel = new Label("0");
+
+			this.getChildren().addAll(this.turnTotalHeader, this.turnTotalLabel);
+		}
+
+		/**
+		 * Sets the value of the turnTotalLabel to the given value
+		 * 
+		 * @param turnTotal - the new turnTotal to display
+		 */
+		public void setTurnTotalValue(int turnTotal) {
+			this.turnTotalLabel.setText("" + turnTotal);
+		}
 	}
 
 	@Override
@@ -84,42 +145,14 @@ public class HumanPane extends GridPane implements InvalidationListener {
 
 		int turnTotal = this.theHuman.getTurnTotal();
 		String result = this.theHuman.getDiceValues();
-		this.lblDiceValues.setText(result);
-		this.lblTurnTotal.setText("" + turnTotal);
-		
+		this.diceValuesBox.diceValuesLabel.setText(result);
+		this.turnTotalBox.setTurnTotalValue(turnTotal);
+
 		this.setDisable(!myTurn);
-		
+
 		if (this.theGame.isGameOver()) {
 			this.setDisable(true);
 			return;
-		}
-	}
-
-	private class TakeTurnListener implements EventHandler<ActionEvent> {
-		/** 
-		 * Tells the Game to have its current player (i.e., the human Player)
-		 * take its turn.	
-		 * 
-		 */
-		@Override
-		public void handle(ActionEvent event) {
-			if (!HumanPane.this.theGame.isGameOver()) {
-				HumanPane.this.theGame.play();
-			}
-		}
-	}
-	
-	private class HoldListener implements EventHandler<ActionEvent> {
-		/** 
-		 * Tells the Game that its current player (i.e., the human Player)
-		 * will be holding	
-		 * 
-		 */
-		@Override
-		public void handle(ActionEvent event) {
-			if (!HumanPane.this.theGame.isGameOver()) {
-				HumanPane.this.theGame.hold();
-			}
 		}
 	}
 }
