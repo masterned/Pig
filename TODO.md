@@ -10,6 +10,8 @@
     * [ ] resetScores
     * [ ] getGameOverIndicator
     * [ ] getDiceRolls
+    * [ ] rollDice
+    * [ ] resetDiceValues
 * [ ] dynamically size window to content?
 * [ ] bind panel disabling to Players' isMyTurn variable?
 * [ ] bind chosen player radio buttons to players' isMyTurn variables?
@@ -37,7 +39,7 @@
 ## Display list of rolled values
 * [x] store rolls in ObservableArrayList
 * [x] use ListView to display rolled values
-* [ ] reset list on new game
+* [x] reset list on new game
 * [x] create AbstractPlayerPane for DRYness
 * [x] resize ListView & Window for optimal display
 * [ ] always show most recent roll
