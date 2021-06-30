@@ -4,13 +4,13 @@
 * [x] test `Player.addDiceToTotal` method
 * [x] remove unused methods and tests in `AbstractPlayer` class
 * [x] extract Menus
-* [ ] __test new methods__
+* [x] __test new methods__
     * [x] reset
         * [x] Die
         * [x] DicePair
     * [x] resetScores
     * [x] clearDiceValues
-    * [ ] resetDice
+    * [x] resetDice
     * [x] getGameOverIndicator
     * [x] rollDice
 
