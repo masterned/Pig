@@ -21,12 +21,11 @@ import javafx.scene.layout.VBox;
  * @author Spencer Dent
  * @version 2021-06-09
  */
-public class HumanPane extends GridPane implements InvalidationListener {
+public class HumanPane extends AbstractPlayerPane {
 
 	private Game theGame;
 	private HumanPlayer theHuman;
 
-	private HBox playerTitleBox;
 	private DiceValuesBox diceValuesBox;
 	private ButtonBox buttonBox;
 	private TurnTotalBox turnTotalBox;
@@ -39,13 +38,11 @@ public class HumanPane extends GridPane implements InvalidationListener {
 	 * @requires theGame != null
 	 */
 	public HumanPane(Game theGame) {
+		super(theGame, theGame.getHumanPlayer());
 		this.theGame = theGame;
 		this.theGame.addListener(this);
 
 		this.theHuman = this.theGame.getHumanPlayer();
-
-		this.playerTitleBox = new PlayerTitleBox(this.theHuman.getName());
-		this.add(this.playerTitleBox, 0, 0, 2, 1);
 
 		this.diceValuesBox = new DiceValuesBox(this.theHuman);
 		this.add(this.diceValuesBox, 0, 1);
@@ -55,15 +52,6 @@ public class HumanPane extends GridPane implements InvalidationListener {
 
 		this.turnTotalBox = new TurnTotalBox();
 		this.add(this.turnTotalBox, 0, 3);
-	}
-
-	private class PlayerTitleBox extends HBox {
-		PlayerTitleBox(String playerName) {
-			super();
-			this.getStyleClass().add("box-center");
-			this.getStyleClass().add("box-padding");
-			this.getChildren().add(new Label("~~ " + playerName + " ~~"));
-		}
 	}
 
 	private class DiceValuesBox extends VBox {

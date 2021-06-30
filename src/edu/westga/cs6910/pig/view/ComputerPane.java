@@ -18,7 +18,7 @@ import javafx.scene.layout.HBox;
  * @author Spencer Dent
  * @version 2021-06-08
  */
-public class ComputerPane extends GridPane implements InvalidationListener {
+public class ComputerPane extends AbstractPlayerPane {
 	private Label lblDiceValues;
 	private Label lblTurnTotal;
 	private Button btnTakeTurn;
@@ -34,6 +34,8 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 	 * @requires theGame != null
 	 */
 	public ComputerPane(Game theGame) {
+		super(theGame, theGame.getComputerPlayer());
+		
 		this.theGame = theGame;
 
 		this.theGame.addListener(this);
@@ -44,12 +46,6 @@ public class ComputerPane extends GridPane implements InvalidationListener {
 	}
 
 	private void buildPane() {
-		HBox topBox = new HBox();
-		topBox.getStyleClass().add("box-center");
-		topBox.getStyleClass().add("box-padding");
-		topBox.getChildren().add(new Label("~~ " + this.theComputer.getName() + " ~~"));
-		this.add(topBox, 0, 0, 2, 1);
-
 		HBox middleBox = new HBox();
 		middleBox.getStyleClass().add("box-padding");
 		middleBox.getChildren().add(new Label("Dice Values: "));
