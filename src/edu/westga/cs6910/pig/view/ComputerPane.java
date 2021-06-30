@@ -14,10 +14,11 @@ import javafx.scene.layout.HBox;
  * @version 2021-06-08
  */
 public class ComputerPane extends AbstractPlayerPane {
-	private Button btnTakeTurn;
 
-	private ComputerPlayer theComputer;
 	private Game theGame;
+	private ComputerPlayer theComputer;
+
+	private TurnTakingBox turnTakingBox;
 
 	/**
 	 * Creates a new ComputerPane that observes the specified game.
@@ -35,21 +36,31 @@ public class ComputerPane extends AbstractPlayerPane {
 
 		this.theComputer = this.theGame.getComputerPlayer();
 
-		this.buildPane();
+		this.turnTakingBox = new TurnTakingBox();
+		this.add(this.turnTakingBox, 0, 2);
 	}
 
-	private void buildPane() {
-		HBox buttonBox = new HBox();
-		buttonBox.getStyleClass().add("box-padding");
-		this.btnTakeTurn = new Button("Take Turn");
-		this.btnTakeTurn.setOnAction(actionEvent -> {
-			if (!ComputerPane.this.theGame.isGameOver()) {
-				ComputerPane.this.theComputer.setMaximumRolls();
-				ComputerPane.this.theGame.play();
-			}
-		});
-		buttonBox.getChildren().add(this.btnTakeTurn);
-		this.add(buttonBox, 0, 2);
+	private class TurnTakingBox extends HBox {
+		private Button takeTurnButton;
+
+		TurnTakingBox() {
+			super();
+			this.getStyleClass().add("box-padding");
+
+			this.buildTakeTurnButton();
+
+			this.getChildren().add(this.takeTurnButton);
+		}
+
+		private void buildTakeTurnButton() {
+			this.takeTurnButton = new Button("Take Turn");
+			this.takeTurnButton.setOnAction(actionEvent -> {
+				if (!ComputerPane.this.theGame.isGameOver()) {
+					ComputerPane.this.theComputer.setMaximumRolls();
+					ComputerPane.this.theGame.play();
+				}
+			});
+		}
 	}
 
 	@Override
