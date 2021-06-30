@@ -73,7 +73,7 @@ public abstract class AbstractPlayer implements Player {
 	 */
 	public void rollDice() {
 		this.thePair.rollDice();
-		this.rolls.add(this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value());
+		this.rolls.add(0, this.thePair.getDie1Value() + ", " + this.thePair.getDie2Value());
 	}
 
 	@Override
