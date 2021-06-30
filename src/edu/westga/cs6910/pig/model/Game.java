@@ -238,7 +238,11 @@ public class Game implements Observable {
 	 */
 	public void resetDice() {
 		this.theHuman.getThePair().reset();
+		this.theHuman.resetDiceValues();
+		
 		this.theComputer.getThePair().reset();
+		this.theComputer.resetDiceValues();
+		
 		this.thePair.reset();
 	}
 

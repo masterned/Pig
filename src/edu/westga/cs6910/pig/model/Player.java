@@ -57,13 +57,18 @@ public interface Player {
 	 * @return The number of pips showing on the die that were just rolled
 	 */
 	String getDiceValues();
-	
+
 	/**
 	 * Returns the ObservableList of dice rolls
 	 * 
 	 * @return the list of rolls made by the Player
 	 */
 	ObservableList<String> getDiceRolls();
+
+	/**
+	 * Clears the list of Dice values.
+	 */
+	void resetDiceValues();
 
 	@Override
 	/**

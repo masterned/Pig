@@ -91,6 +91,14 @@ public abstract class AbstractPlayer implements Player {
 	public ObservableList<String> getDiceRolls() {
 		return this.rolls;
 	}
+	
+	@Override
+	/**
+	 * @see Player#resetDiceValues
+	 */
+	public void resetDiceValues() {
+		this.rolls.clear();
+	}
 
 	/**
 	 * Returns whether one or both of the dice have one pip showing
