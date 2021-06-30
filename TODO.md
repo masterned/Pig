@@ -34,8 +34,11 @@
     * [x] disable until game start
 
 ## Display list of rolled values
-* [ ] store rolls in ObservableArrayList
-* [ ] use ListView to display rolled values
+* [x] store rolls in ObservableArrayList
+* [x] use ListView to display rolled values
+* [ ] reset list on new game
+* [ ] create AbstractPlayerPane for DRYness
+* [ ] resize ListView & Window for optimal display
 * [ ] reset list on each turn?
 * [ ] __generate write-up__
 * [ ] __add web guide entry__
