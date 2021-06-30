@@ -4,7 +4,6 @@ import edu.westga.cs6910.pig.model.Game;
 import edu.westga.cs6910.pig.model.HumanPlayer;
 import javafx.beans.Observable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 /**
@@ -22,7 +21,6 @@ public class HumanPane extends AbstractPlayerPane {
 	private HumanPlayer theHuman;
 
 	private ButtonBox buttonBox;
-	private TurnTotalBox turnTotalBox;
 
 	/**
 	 * Creates a new HumanPane that observes the specified game.
@@ -40,9 +38,6 @@ public class HumanPane extends AbstractPlayerPane {
 
 		this.buttonBox = new ButtonBox();
 		this.add(this.buttonBox, 0, 2);
-
-		this.turnTotalBox = new TurnTotalBox();
-		this.add(this.turnTotalBox, 0, 3);
 	}
 
 	private class ButtonBox extends HBox {
@@ -79,37 +74,12 @@ public class HumanPane extends AbstractPlayerPane {
 		}
 	}
 
-	private class TurnTotalBox extends HBox {
-		private Label turnTotalHeader;
-		private Label turnTotalLabel;
-
-		TurnTotalBox() {
-			super();
-			this.getStyleClass().add("box-padding");
-
-			this.turnTotalHeader = new Label("Turn Total: ");
-
-			this.turnTotalLabel = new Label("0");
-
-			this.getChildren().addAll(this.turnTotalHeader, this.turnTotalLabel);
-		}
-
-		/**
-		 * Sets the value of the turnTotalLabel to the given value
-		 * 
-		 * @param turnTotal - the new turnTotal to display
-		 */
-		public void setTurnTotalValue(int turnTotal) {
-			this.turnTotalLabel.setText("" + turnTotal);
-		}
-	}
-
 	@Override
 	public void invalidated(Observable observable) {
 		boolean myTurn = this.theGame.getCurrentPlayer() == this.theHuman;
 
 		int turnTotal = this.theHuman.getTurnTotal();
-		this.turnTotalBox.setTurnTotalValue(turnTotal);
+		this.getTurnTotalBox().setTurnTotalValue(turnTotal);
 
 		this.setDisable(!myTurn);
 

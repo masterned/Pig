@@ -6,7 +6,6 @@ import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
 /**
@@ -17,7 +16,6 @@ import javafx.scene.layout.HBox;
  * @version 2021-06-08
  */
 public class ComputerPane extends AbstractPlayerPane {
-	private Label lblTurnTotal;
 	private Button btnTakeTurn;
 
 	private ComputerPlayer theComputer;
@@ -49,13 +47,6 @@ public class ComputerPane extends AbstractPlayerPane {
 		this.btnTakeTurn.setOnAction(new TakeTurnListener());
 		buttonBox.getChildren().add(this.btnTakeTurn);
 		this.add(buttonBox, 0, 2);
-
-		HBox bottomBox = new HBox();
-		bottomBox.getStyleClass().add("box-padding");
-		bottomBox.getChildren().add(new Label("Turn Total: "));
-		this.lblTurnTotal = new Label("0");
-		bottomBox.getChildren().add(this.lblTurnTotal);
-		this.add(bottomBox, 0, 3);
 	}
 
 	@Override
@@ -64,7 +55,7 @@ public class ComputerPane extends AbstractPlayerPane {
 
 		if (!myTurn) {
 			int turnTotal = this.theComputer.getTurnTotal();
-			this.lblTurnTotal.setText("" + turnTotal);
+			this.getTurnTotalBox().setTurnTotalValue(turnTotal);
 		}
 
 		this.setDisable(!myTurn);

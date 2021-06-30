@@ -23,6 +23,7 @@ public abstract class AbstractPlayerPane extends GridPane implements Invalidatio
 
 	private HBox playerTitleBox;
 	private DiceValuesBox diceValuesBox;
+	private TurnTotalBox turnTotalBox;
 
 	/**
 	 * Contains functionality shared between all Player constructors.
@@ -38,9 +39,21 @@ public abstract class AbstractPlayerPane extends GridPane implements Invalidatio
 
 		this.playerTitleBox = new PlayerTitleBox(this.thePlayer.getName());
 		this.add(this.playerTitleBox, 0, 0, 2, 1);
-		
+
 		this.diceValuesBox = new DiceValuesBox(this.thePlayer);
 		this.add(this.diceValuesBox, 0, 1);
+
+		this.turnTotalBox = new TurnTotalBox();
+		this.add(this.turnTotalBox, 0, 3);
+	}
+
+	/**
+	 * Retrieves the turnTotal HBox from the Pane
+	 * 
+	 * @return turnTotalBox - the HBox displaying the turnTotal
+	 */
+	public TurnTotalBox getTurnTotalBox() {
+		return this.turnTotalBox;
 	}
 
 	private class PlayerTitleBox extends HBox {
@@ -71,6 +84,31 @@ public abstract class AbstractPlayerPane extends GridPane implements Invalidatio
 			this.diceValuesListView = new ListView<String>(this.thePlayer.getDiceRolls());
 
 			this.getChildren().addAll(this.diceValuesHeader, this.diceValuesListView);
+		}
+	}
+
+	protected class TurnTotalBox extends HBox {
+		private Label turnTotalHeader;
+		private Label turnTotalLabel;
+
+		TurnTotalBox() {
+			super();
+			this.getStyleClass().add("box-padding");
+
+			this.turnTotalHeader = new Label("Turn Total: ");
+
+			this.turnTotalLabel = new Label("0");
+
+			this.getChildren().addAll(this.turnTotalHeader, this.turnTotalLabel);
+		}
+
+		/**
+		 * Sets the value of the turnTotalLabel to the given value
+		 * 
+		 * @param turnTotal - the new turnTotal to display
+		 */
+		public void setTurnTotalValue(int turnTotal) {
+			this.turnTotalLabel.setText("" + turnTotal);
 		}
 	}
 }
