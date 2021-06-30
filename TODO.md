@@ -16,7 +16,7 @@
 
 ## Random First Player Selection
 * [x] __generate write-up__
-* [ ] __add web guide entry__
+* [x] __add web guide entry__
 
 ## New Game
 * [x] add new game button
@@ -26,7 +26,7 @@
 * [x] hide start new game button until end of game
 * [ ] randomize first player if random initially selected?
 * [x] __generate write-up__
-* [ ] __add web guide entry__
+* [x] __add web guide entry__
 * [x] add New Game MenuItem to Game Menu
     * [x] add mnemonic
     * [x] add accelerator
@@ -43,7 +43,7 @@
 * [x] replace `getDiceValues` method
 * [ ] reset list on each turn?
 * [x] __generate write-up__
-* [ ] __add web guide entry__
+* [x] __add web guide entry__
 
 ## instructions display?
 * [ ] use PopupWindow for instructions & checkbox for opt-in
