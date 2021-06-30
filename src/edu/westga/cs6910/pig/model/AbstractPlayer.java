@@ -83,12 +83,12 @@ public abstract class AbstractPlayer implements Player {
 	public ObservableList<String> getDiceValues() {
 		return this.rolls;
 	}
-	
+
 	@Override
 	/**
-	 * @see Player#resetDiceValues
+	 * @see Player#clearDiceValues
 	 */
-	public void resetDiceValues() {
+	public void clearDiceValues() {
 		this.rolls.clear();
 	}
 

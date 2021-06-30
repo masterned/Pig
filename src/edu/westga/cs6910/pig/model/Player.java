@@ -61,7 +61,7 @@ public interface Player {
 	/**
 	 * Clears the list of Dice values.
 	 */
-	void resetDiceValues();
+	void clearDiceValues();
 
 	@Override
 	/**
