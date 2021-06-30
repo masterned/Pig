@@ -6,9 +6,8 @@
 * [x] extract Menus
 * [ ] __test new methods__
     * [ ] reset Die, DicePair, Dice, Scores, DiceValues
-    * [ ] getGameOverIndicator
-    * [ ] getDiceRolls
-    * [ ] rollDice
+    * [x] getGameOverIndicator
+    * [x] rollDice
 
 ## Random First Player Selection
 * [ ] __generate write-up__
