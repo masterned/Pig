@@ -44,4 +44,44 @@ public class TestWhenHold {
 		testGame.hold();
 		assertEquals(testHumanPlayer, testGame.getCurrentPlayer());
 	}
+
+	/**
+	 * When swapping over to the HumanPlayer after the ComputerPlayer's turn, hold
+	 * should clear the dice values of the HumanPlayer.
+	 */
+	@Test
+	public void testWhenSwapToHumanPlayerShouldClearHumanPlayerDiceValues() {
+		HumanPlayer testHumanPlayer = new HumanPlayer("test");
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
+		Game testGame = new Game(testHumanPlayer, testComputerPlayer);
+		testGame.startNewGame(testComputerPlayer);
+
+		testHumanPlayer.rollDice();
+		testHumanPlayer.rollDice();
+		testHumanPlayer.rollDice();
+
+		testGame.hold();
+
+		assertEquals(0, testHumanPlayer.getDiceValues().size());
+	}
+
+	/**
+	 * When swapping over to the ComputerPlayer after the HumanPlayer's turn, hold
+	 * should clear the dice values of the ComputerPlayer.
+	 */
+	@Test
+	public void testWhenSwapToComputerPlayerShouldClearComputerPlayerDiceValues() {
+		HumanPlayer testHumanPlayer = new HumanPlayer("test");
+		ComputerPlayer testComputerPlayer = new ComputerPlayer(new CautiousStrategy());
+		Game testGame = new Game(testHumanPlayer, testComputerPlayer);
+		testGame.startNewGame(testHumanPlayer);
+
+		testComputerPlayer.rollDice();
+		testComputerPlayer.rollDice();
+		testComputerPlayer.rollDice();
+
+		testGame.hold();
+
+		assertEquals(0, testComputerPlayer.getDiceValues().size());
+	}
 }
